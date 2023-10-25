@@ -1,0 +1,10 @@
+fsm_clock.c:29:6:offAllLedMode	8	static
+fsm_clock.c:35:6:changeLedMode	8	static
+fsm_clock.c:53:6:clearAllCLock	8	static
+fsm_clock.c:68:6:setNumberOnClock	16	static
+fsm_clock.c:72:6:clearNumberOnClock	16	static
+fsm_clock.c:76:6:init_clock	24	static
+fsm_clock.c:88:6:checkMode	8	static
+fsm_clock.c:94:6:run_state	8	static
+fsm_clock.c:119:6:change_state	8	static
+fsm_clock.c:152:6:fsm_clock	8	static
