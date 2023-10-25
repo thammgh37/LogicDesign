@@ -14,4 +14,5 @@
 
 void init_clock(int,int,int);
 void fsm_clock();
+void checkButtonClock();
 #endif /* INC_FSM_CLOCK_H_ */

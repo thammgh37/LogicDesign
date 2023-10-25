@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-#define NO_OF_BUTTONS 4
+#define NO_OF_BUTTONS 3
 #define TIME_OUT_FOR_KEY_PRESSED 200
 #define WAITING_TIME 1000
 

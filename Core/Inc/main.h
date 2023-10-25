@@ -96,6 +96,7 @@ void Error_Handler(void);
 #define MODE3_GPIO_Port GPIOA
 #define BUTTON_4_Pin GPIO_PIN_3
 #define BUTTON_4_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
@@ -105,5 +106,3 @@ void Error_Handler(void);
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

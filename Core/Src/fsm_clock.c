@@ -22,16 +22,16 @@ enum ClockMode{
 	CHANGE_MINUTE,
 	CHANGE_SECOND
 };
-int second, minute, hour;
+int second =0 , minute =0, hour=0;
 enum ClockState currentState = NORMAL_STATE;
 enum ClockMode currentMode = CHANGE_HOUR;
-int stopClock = 0;
+int _step = 1;
+// ======= LED MODE ==========
 void offAllLedMode(){
 	HAL_GPIO_WritePin(MODE1_GPIO_Port, MODE1_Pin, 1);
 	HAL_GPIO_WritePin(MODE2_GPIO_Port, MODE2_Pin, 1);
 	HAL_GPIO_WritePin(MODE3_GPIO_Port, MODE3_Pin, 1);
 }
-
 void changeLedMode(){
 	switch(currentMode){
 	case CHANGE_HOUR:
@@ -50,6 +50,7 @@ void changeLedMode(){
 		break;
 	}
 }
+// ======= LED CLOCK =========
 void clearAllCLock()
 {
   HAL_GPIO_WritePin(portArr[0], pinArr[0], 1);
@@ -73,27 +74,76 @@ void clearNumberOnClock(int num)
 {
   HAL_GPIO_WritePin(portArr[num], pinArr[num], 1);
 }
-void init_clock(int second,int minute, int hour){
+void init_clock(int _second,int _minute, int _hour){
 	clearAllCLock();
 	offAllLedMode();
 	currentState = NORMAL_STATE;
 	currentMode = CHANGE_HOUR;
-	second = second;
-	minute = minute;
-	hour = hour;
+	changeLedMode();
+	second = _second;
+	minute = _minute;
+	hour = _hour;
 	setNumberOnClock(second/5);
 	setNumberOnClock(minute/5);
 	setNumberOnClock(hour/2);
 }
-void checkMode(){
-	if(isButtonLongPress(0)){
-		stopClock = 1 - stopClock;
-		currentState = 1 - currentState;
+// ======= SETUP CLOCK ===========
+void setupClock(int step){
+	if(currentState == NORMAL_STATE) return;
+	switch(currentMode){
+		case CHANGE_HOUR:
+			hour+=step;
+			if(hour > 11 || hour < 0){
+				hour = 0;
+			}
+			setNumberOnClock(hour/2);
+			break;
+		case CHANGE_MINUTE:
+			minute+=step;
+			if(minute > 59 || minute < 0){
+				minute = 0;
+			}
+			setNumberOnClock(minute / 5);
+			break;
+		case CHANGE_SECOND:
+			second+=step;
+			if(second > 59 || second < 0){
+				second = 0;
+			}
+			setNumberOnClock(second / 5);
+			break;
+		default:
+			break;
 	}
 }
-void run_state(){
-	if(stopClock) return;
-	if (second != minute && second != hour)
+// ====== CHECK BUTTON FUNCTION ======
+void checkButtonClock(){
+	if(isButtonLongPress(0)){
+		currentState = 1 - currentState;
+		if(currentState == CHANGE_STATE){
+			changeLedMode();
+		}
+	}
+	if(isButtonPress(0)){
+		if(currentState == CHANGE_STATE){
+			currentMode++;
+			currentMode %= 3;
+			changeLedMode();
+		}
+	}
+	else if(isButtonPress(2)){
+		setupClock(_step);
+	}
+	else if(isButtonPress(3)){
+		setupClock(-_step);
+	}
+}
+// ======= FSM FUNCTION =======
+void fsm_clock(){
+	if(currentState == CHANGE_STATE) return;
+	offAllLedMode();
+	currentMode = CHANGE_HOUR;
+	if (second/5 != minute/5 && second/5 != hour/2)
 	{
 	  clearNumberOnClock(second/5);
 	}
@@ -102,63 +152,19 @@ void run_state(){
 	{
 	  second = 0;
 	  clearNumberOnClock(minute/5);
-	  minute++;
+	  minute+=5;
 	}
 	if (minute > 59)
 	{
 	  minute = 0;
 	  clearNumberOnClock(hour/2);
-	  hour++;
+	  hour+=2;
 	}
-	if (hour > 11)
+	if (hour > 23)
 	  hour = 0;
 	setNumberOnClock(hour/2);
 	setNumberOnClock(minute/5);
 	setNumberOnClock(second/5);
-}
-void change_state(){
-//	if(isButtonLongPress(0) || isButtonPress(0)) return;
-	if(isButtonPress(0)){
-		currentMode++;
-		currentMode %= 3;
-		changeLedMode();
-		switch(currentMode){
-			case CHANGE_HOUR:
-				hour++;
-				if(hour > 11){
-					hour = 0;
-				}
-				setNumberOnClock(hour);
-				break;
-			case CHANGE_MINUTE:
-				minute++;
-				if(minute > 59){
-					minute = 0;
-				}
-				setNumberOnClock(minute);
-				break;
-			case CHANGE_SECOND:
-				second++;
-				if(second > 59){
-					second = 0;
-				}
-				setNumberOnClock(second);
-				break;
-			default:
-				break;
-		}
-	}
-}
-void fsm_clock(){
-	checkMode();
-	switch(currentState){
-	case NORMAL_STATE:
-		run_state();
-		break;
-	case CHANGE_STATE:
-		change_state();
-		break;
-	}
 }
 
 

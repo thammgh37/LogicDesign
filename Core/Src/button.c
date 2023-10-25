@@ -8,7 +8,7 @@ static int debounce_2[NO_OF_BUTTONS];
 static int debounce_3[NO_OF_BUTTONS];
 
 // state
-static int button_state_save[NO_OF_BUTTONS] = {BUTTON_IS_RELEASED, BUTTON_IS_RELEASED, BUTTON_IS_RELEASED, BUTTON_IS_RELEASED};
+static int button_state_save[NO_OF_BUTTONS] = {BUTTON_IS_RELEASED, BUTTON_IS_RELEASED, BUTTON_IS_RELEASED};
 
 static int counter_for_button_pressed[NO_OF_BUTTONS];
 
@@ -64,9 +64,6 @@ void button_reading()
         case 2:
             debounce_1[i] = HAL_GPIO_ReadPin(BUTTON_3_GPIO_Port, BUTTON_3_Pin);
             break;
-        case 3:
-            debounce_1[i] = HAL_GPIO_ReadPin(BUTTON_4_GPIO_Port, BUTTON_4_Pin);
-            break;
         default:
             break;
         }
@@ -89,6 +86,13 @@ void button_reading()
 
             case BUTTON_IS_PRESSED:
                 /* code */
+            	if (current_button_state[i] == RELEASED_STATE)
+			   {
+            		button_flag[i] = 1;
+				   button_state_save[i] = BUTTON_IS_RELEASED;
+				   counter_for_button_pressed[i] = 0;
+				   return;
+			   }
                 counter_for_button_pressed[i]++;
                 if (counter_for_button_pressed[i] >= WAITING_TIME / TIME_CYCLE)
                 {
@@ -96,12 +100,7 @@ void button_reading()
                     counter_for_button_pressed[i] = 0;
                     button_flag_long[i] = 1;
                 }
-                if (current_button_state[i] == RELEASED_STATE)
-			   {
-                	button_flag[i] = 1;
-				   button_state_save[i] = BUTTON_IS_RELEASED;
-				   counter_for_button_pressed[i] = 0;
-			   }
+
                 break;
 
             case BUTTON_IS_LONG_PRESSED:
@@ -114,7 +113,6 @@ void button_reading()
                 counter_for_button_pressed[i]++;
                 if (counter_for_button_pressed[i] == TIME_OUT_FOR_KEY_PRESSED / TIME_CYCLE)
                 {
-                    button_flag_long[i] = 0;
                     counter_for_button_pressed[i] = 0;
                 }
                 break;
