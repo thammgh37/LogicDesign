@@ -1,0 +1,5 @@
+display_led_matrix.c:74:6:writeByte	24	static
+display_led_matrix.c:84:6:displayLedMatrix_red	24	static
+display_led_matrix.c:123:6:displayLedMatrix_green	24	static
+display_led_matrix.c:162:6:set_state_matrix	4	static
+display_led_matrix.c:179:6:displayLedMatrix	16	static
