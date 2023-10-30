@@ -10,13 +10,13 @@ int index_led = 0;
 int trans = 0;
 
 void scan_matrix(){
+	  if (index_led >= 8){
+		  index_led = 0;
+	  }
 	  if (timer1_flag == 1){
-		  setTimer1(100); //100ms
+		  setTimer1(2); //10ms
 		  displayLedMatrix(trans, index_led);
 		  index_led++;
-		  if (index_led >= 8){
-			  index_led = 0;
-		  }
 	  }
 	  if(timer2_flag == 1){
 		  trans++;
@@ -30,7 +30,7 @@ void scan_matrix(){
 void set_state(){
 	  index_led = 0;
 	  trans = 0;
-	  setTimer1(100);//10ms
+	  setTimer1(2);//10ms
 	  setTimer2(500);//500ms
 }
 
@@ -39,10 +39,10 @@ void controlLedMatrix(){
 		case INIT:
 			status = NORMAL_MODE;
 			set_state();
-			mode_char = A ;
-			mode_animation = stable ;
-			mode_color = red;
 			setTimer3(500);//0.5s
+			mode_char = A;
+			mode_animation = stable;
+			mode_color = red;
 			break;
 		case NORMAL_MODE:
 			 scan_matrix();

@@ -26,7 +26,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/software_timer.h ../Core/Inc/control_led_matrix.h \
  ../Core/Inc/software_timer.h ../Core/Inc/main.h \
  ../Core/Inc/display_led_matrix.h ../Core/Inc/global.h \
- ../Core/Inc/button.h ../Core/Inc/blink_led_mode.h ../Core/Inc/global.h
+ ../Core/Inc/button.h ../Core/Inc/blink_led_mode.h ../Core/Inc/button.h
 
 ../Core/Inc/main.h:
 
@@ -94,4 +94,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Core/Inc/blink_led_mode.h:
 
-../Core/Inc/global.h:
+../Core/Inc/button.h:

@@ -58,14 +58,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define LED_NORMAL_MODE_Pin GPIO_PIN_0
-#define LED_NORMAL_MODE_GPIO_Port GPIOC
-#define LED_CHAR_MODE_Pin GPIO_PIN_1
-#define LED_CHAR_MODE_GPIO_Port GPIOC
-#define LED_ANI_MODE_Pin GPIO_PIN_2
-#define LED_ANI_MODE_GPIO_Port GPIOC
-#define LED_COLOR_MODE_Pin GPIO_PIN_3
-#define LED_COLOR_MODE_GPIO_Port GPIOC
 #define ENM0_Pin GPIO_PIN_1
 #define ENM0_GPIO_Port GPIOA
 #define ENM1_Pin GPIO_PIN_2
@@ -86,18 +78,26 @@ void Error_Handler(void);
 #define ROW1_GPIO_Port GPIOB
 #define ROW2_Pin GPIO_PIN_2
 #define ROW2_GPIO_Port GPIOB
-#define gROW2_Pin GPIO_PIN_10
-#define gROW2_GPIO_Port GPIOB
-#define gROW3_Pin GPIO_PIN_11
-#define gROW3_GPIO_Port GPIOB
-#define gROW4_Pin GPIO_PIN_12
-#define gROW4_GPIO_Port GPIOB
-#define gROW5_Pin GPIO_PIN_13
-#define gROW5_GPIO_Port GPIOB
-#define gROW6_Pin GPIO_PIN_14
-#define gROW6_GPIO_Port GPIOB
-#define gROW7_Pin GPIO_PIN_15
-#define gROW7_GPIO_Port GPIOB
+#define gENM2_Pin GPIO_PIN_10
+#define gENM2_GPIO_Port GPIOB
+#define gENM3_Pin GPIO_PIN_11
+#define gENM3_GPIO_Port GPIOB
+#define gENM4_Pin GPIO_PIN_12
+#define gENM4_GPIO_Port GPIOB
+#define gENM5_Pin GPIO_PIN_13
+#define gENM5_GPIO_Port GPIOB
+#define gENM6_Pin GPIO_PIN_14
+#define gENM6_GPIO_Port GPIOB
+#define gENM7_Pin GPIO_PIN_15
+#define gENM7_GPIO_Port GPIOB
+#define LED_NORMAL_MODE_Pin GPIO_PIN_6
+#define LED_NORMAL_MODE_GPIO_Port GPIOC
+#define LED_CHAR_MODE_Pin GPIO_PIN_7
+#define LED_CHAR_MODE_GPIO_Port GPIOC
+#define LED_ANI_MODE_Pin GPIO_PIN_8
+#define LED_ANI_MODE_GPIO_Port GPIOC
+#define LED_COLOR_MODE_Pin GPIO_PIN_9
+#define LED_COLOR_MODE_GPIO_Port GPIOC
 #define ENM7_Pin GPIO_PIN_8
 #define ENM7_GPIO_Port GPIOA
 #define BUTTON_MODE_Pin GPIO_PIN_10
@@ -114,10 +114,10 @@ void Error_Handler(void);
 #define ROW6_GPIO_Port GPIOB
 #define ROW7_Pin GPIO_PIN_7
 #define ROW7_GPIO_Port GPIOB
-#define gROW0_Pin GPIO_PIN_8
-#define gROW0_GPIO_Port GPIOB
-#define gROW1_Pin GPIO_PIN_9
-#define gROW1_GPIO_Port GPIOB
+#define gENM0_Pin GPIO_PIN_8
+#define gENM0_GPIO_Port GPIOB
+#define gENM1_Pin GPIO_PIN_9
+#define gENM1_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

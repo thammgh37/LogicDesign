@@ -7,4 +7,7 @@
 
 #include "global.h"
 
-status = INIT;
+int status = INIT;
+int mode_char = 0;
+int mode_animation = 0;
+int mode_color = 0;
