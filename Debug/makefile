@@ -50,6 +50,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 light_traffic_final.list \
 
+OBJCOPY_HEX += \
+light_traffic_final.hex \
+
 OBJCOPY_BIN += \
 light_traffic_final.bin \
 
@@ -61,8 +64,8 @@ all: main-build
 main-build: light_traffic_final.elf secondary-outputs
 
 # Tool invocations
-light_traffic_final.elf: $(OBJS) $(USER_OBJS) C:\Logic_Design_project\light_traffic\final\STM32F103RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "light_traffic_final.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Logic_Design_project\light_traffic\final\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="light_traffic_final.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+light_traffic_final.elf: $(OBJS) $(USER_OBJS) C:\Logic_Design_project\Git_hub\STM32F103RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "light_traffic_final.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Logic_Design_project\Git_hub\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="light_traffic_final.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -76,6 +79,11 @@ light_traffic_final.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_D
 	@echo 'Finished building: $@'
 	@echo ' '
 
+light_traffic_final.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "light_traffic_final.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 light_traffic_final.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "light_traffic_final.bin"
 	@echo 'Finished building: $@'
@@ -83,10 +91,10 @@ light_traffic_final.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DE
 
 # Other Targets
 clean:
-	-$(RM) $(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) light_traffic_final.elf
+	-$(RM) $(OBJCOPY_HEX)$(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) light_traffic_final.elf
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

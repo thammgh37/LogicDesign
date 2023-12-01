@@ -230,7 +230,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pins : BUTTON_DOWN_Pin BUTTON_UP_Pin */
   GPIO_InitStruct.Pin = BUTTON_DOWN_Pin|BUTTON_UP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED2_RED_Pin SEG_G_Pin SEG_D_Pin SEG_F_Pin
@@ -245,7 +245,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : BUTTON_MODE_Pin */
   GPIO_InitStruct.Pin = BUTTON_MODE_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(BUTTON_MODE_GPIO_Port, &GPIO_InitStruct);
 
 }
