@@ -1,0 +1,11 @@
+driver.c:10:6:display_red1_green2	8	static
+driver.c:18:6:display_red1_yellow2	8	static
+driver.c:26:6:display_green1_red2	8	static
+driver.c:34:6:display_yellow1_red2	8	static
+driver.c:42:6:blink_yellow	8	static
+driver.c:50:6:turn_on_yellow	8	static
+driver.c:58:6:blink_red1_green2	8	static
+driver.c:66:6:blink_green1_red2	8	static
+driver.c:74:6:display_led_7seg	16	static
+driver.c:171:6:control_led_7seg	8	static
+driver.c:187:6:turn_off_led_7seg	8	static

@@ -1,0 +1,2 @@
+normal_mode_fsm.c:11:6:decrease_time	4	static
+normal_mode_fsm.c:15:6:normal_mode_fsm	8	static

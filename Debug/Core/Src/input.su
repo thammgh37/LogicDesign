@@ -1,4 +1,0 @@
-input.c:24:6:initButton	16	static
-input.c:36:5:isButtonPress	16	static
-input.c:43:5:isButtonPressLong	16	static
-input.c:50:6:readPin	16	static

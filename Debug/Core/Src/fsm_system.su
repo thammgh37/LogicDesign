@@ -1,9 +1,0 @@
-fsm_system.c:15:6:saveHourSet	4	static
-fsm_system.c:18:6:saveMinuteSet	4	static
-fsm_system.c:21:6:plusHourOnDisplay	16	static
-fsm_system.c:30:6:plusMinuteOnDisplay	16	static
-fsm_system.c:39:6:display7SEG	16	static
-fsm_system.c:133:6:update7SEG	16	static
-fsm_system.c:164:6:updateBuffer	4	static
-fsm_system.c:170:6:secondPlus	8	static
-fsm_system.c:185:6:fsmSystemRun	8	static
