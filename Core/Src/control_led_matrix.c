@@ -6,12 +6,12 @@
  */
 
 #include "control_led_matrix.h"
-int index_led = 0;
+int index_led = 1;
 int trans = 0;
 
 void scan_matrix(){
-	  if (index_led >= 8){
-		  index_led = 0;
+	  if (index_led >= 9){
+		  index_led = 1;
 	  }
 	  if (timer1_flag == 1){
 		  setTimer1(2); //10ms
@@ -42,7 +42,6 @@ void controlLedMatrix(){
 			setTimer3(500);//0.5s
 			mode_char = A;
 			mode_animation = stable;
-			mode_color = red;
 			break;
 		case NORMAL_MODE:
 			 scan_matrix();

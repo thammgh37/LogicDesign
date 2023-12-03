@@ -10,7 +10,7 @@
 #include "main.h"
 #include "software_timer.h"
 #include "global.h"
-
+#include "led_matrix_driver.h"
 
 
 void displayLedMatrix(int index1, int index2);
