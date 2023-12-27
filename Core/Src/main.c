@@ -94,7 +94,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim2);
   setTimer1(100);
   setTimer2(10);
-  init_clock(30, 59, 23);
+  init_clock(31, 59, 11);
   /* USER CODE END 2 */
 
   /* Infinite loop */

@@ -39,13 +39,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  00016cb7  00000000  00000000  0002ae4a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000acca  00000000  00000000  00041b01  2**0
+ 18 .debug_line   0000ad6a  00000000  00000000  00041b01  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000846ed  00000000  00000000  0004c7cb  2**0
+ 19 .debug_str    000846dd  00000000  00000000  0004c86b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  0000284c  00000000  00000000  000d0eb8  2**2
+ 20 .debug_frame  00002850  00000000  00000000  000d0f48  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000072  00000000  00000000  000d3704  2**0
+ 21 .debug_line_str 00000062  00000000  00000000  000d3798  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -280,7 +280,7 @@ void button_reading()
  8000286:	2b0d      	cmp	r3, #13
  8000288:	dc64      	bgt.n	8000354 <button_reading+0x1a0>
  800028a:	2b0b      	cmp	r3, #11
- 800028c:	d012      	beq.n	80002b4 <button_reading+0x100>
+ 800028c:	d00d      	beq.n	80002aa <button_reading+0xf6>
  800028e:	2b0c      	cmp	r3, #12
  8000290:	d160      	bne.n	8000354 <button_reading+0x1a0>
             {
@@ -298,24 +298,25 @@ void button_reading()
  80002a0:	687b      	ldr	r3, [r7, #4]
  80002a2:	210b      	movs	r1, #11
  80002a4:	f842 1023 	str.w	r1, [r2, r3, lsl #2]
-                	button_flag[i] = 1;
- 80002a8:	4a3a      	ldr	r2, [pc, #232]	; (8000394 <button_reading+0x1e0>)
- 80002aa:	687b      	ldr	r3, [r7, #4]
- 80002ac:	2101      	movs	r1, #1
- 80002ae:	f842 1023 	str.w	r1, [r2, r3, lsl #2]
+
                 }
                 break;
- 80002b2:	e051      	b.n	8000358 <button_reading+0x1a4>
+ 80002a8:	e056      	b.n	8000358 <button_reading+0x1a4>
 
             case BUTTON_IS_PRESSED:
                 /* code */
             	if (current_button_state[i] == RELEASED_STATE)
- 80002b4:	4a35      	ldr	r2, [pc, #212]	; (800038c <button_reading+0x1d8>)
- 80002b6:	687b      	ldr	r3, [r7, #4]
- 80002b8:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
- 80002bc:	2b01      	cmp	r3, #1
- 80002be:	d105      	bne.n	80002cc <button_reading+0x118>
+ 80002aa:	4a38      	ldr	r2, [pc, #224]	; (800038c <button_reading+0x1d8>)
+ 80002ac:	687b      	ldr	r3, [r7, #4]
+ 80002ae:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
+ 80002b2:	2b01      	cmp	r3, #1
+ 80002b4:	d10a      	bne.n	80002cc <button_reading+0x118>
 			   {
+            		button_flag[i] = 1;
+ 80002b6:	4a37      	ldr	r2, [pc, #220]	; (8000394 <button_reading+0x1e0>)
+ 80002b8:	687b      	ldr	r3, [r7, #4]
+ 80002ba:	2101      	movs	r1, #1
+ 80002bc:	f842 1023 	str.w	r1, [r2, r3, lsl #2]
 				   button_state_save[i] = BUTTON_IS_RELEASED;
  80002c0:	4a33      	ldr	r2, [pc, #204]	; (8000390 <button_reading+0x1dc>)
  80002c2:	687b      	ldr	r3, [r7, #4]
@@ -711,31 +712,31 @@ void init_clock(int _second,int _minute, int _hour){
 	offAllLedMode();
  8000580:	f7ff ff0e 	bl	80003a0 <offAllLedMode>
 	currentState = NORMAL_STATE;
- 8000584:	4b19      	ldr	r3, [pc, #100]	; (80005ec <init_clock+0x7c>)
+ 8000584:	4b17      	ldr	r3, [pc, #92]	; (80005e4 <init_clock+0x74>)
  8000586:	2200      	movs	r2, #0
  8000588:	701a      	strb	r2, [r3, #0]
 	currentMode = CHANGE_HOUR;
- 800058a:	4b19      	ldr	r3, [pc, #100]	; (80005f0 <init_clock+0x80>)
+ 800058a:	4b17      	ldr	r3, [pc, #92]	; (80005e8 <init_clock+0x78>)
  800058c:	2200      	movs	r2, #0
  800058e:	701a      	strb	r2, [r3, #0]
 	changeLedMode();
  8000590:	f7ff ff1e 	bl	80003d0 <changeLedMode>
 	second = _second;
- 8000594:	4a17      	ldr	r2, [pc, #92]	; (80005f4 <init_clock+0x84>)
+ 8000594:	4a15      	ldr	r2, [pc, #84]	; (80005ec <init_clock+0x7c>)
  8000596:	68fb      	ldr	r3, [r7, #12]
  8000598:	6013      	str	r3, [r2, #0]
 	minute = _minute;
- 800059a:	4a17      	ldr	r2, [pc, #92]	; (80005f8 <init_clock+0x88>)
+ 800059a:	4a15      	ldr	r2, [pc, #84]	; (80005f0 <init_clock+0x80>)
  800059c:	68bb      	ldr	r3, [r7, #8]
  800059e:	6013      	str	r3, [r2, #0]
 	hour = _hour;
- 80005a0:	4a16      	ldr	r2, [pc, #88]	; (80005fc <init_clock+0x8c>)
+ 80005a0:	4a14      	ldr	r2, [pc, #80]	; (80005f4 <init_clock+0x84>)
  80005a2:	687b      	ldr	r3, [r7, #4]
  80005a4:	6013      	str	r3, [r2, #0]
 	setNumberOnClock(second/5);
- 80005a6:	4b13      	ldr	r3, [pc, #76]	; (80005f4 <init_clock+0x84>)
+ 80005a6:	4b11      	ldr	r3, [pc, #68]	; (80005ec <init_clock+0x7c>)
  80005a8:	681b      	ldr	r3, [r3, #0]
- 80005aa:	4a15      	ldr	r2, [pc, #84]	; (8000600 <init_clock+0x90>)
+ 80005aa:	4a13      	ldr	r2, [pc, #76]	; (80005f8 <init_clock+0x88>)
  80005ac:	fb82 1203 	smull	r1, r2, r2, r3
  80005b0:	1052      	asrs	r2, r2, #1
  80005b2:	17db      	asrs	r3, r3, #31
@@ -743,545 +744,552 @@ void init_clock(int _second,int _minute, int _hour){
  80005b6:	4618      	mov	r0, r3
  80005b8:	f7ff ffaa 	bl	8000510 <setNumberOnClock>
 	setNumberOnClock(minute/5);
- 80005bc:	4b0e      	ldr	r3, [pc, #56]	; (80005f8 <init_clock+0x88>)
+ 80005bc:	4b0c      	ldr	r3, [pc, #48]	; (80005f0 <init_clock+0x80>)
  80005be:	681b      	ldr	r3, [r3, #0]
- 80005c0:	4a0f      	ldr	r2, [pc, #60]	; (8000600 <init_clock+0x90>)
+ 80005c0:	4a0d      	ldr	r2, [pc, #52]	; (80005f8 <init_clock+0x88>)
  80005c2:	fb82 1203 	smull	r1, r2, r2, r3
  80005c6:	1052      	asrs	r2, r2, #1
  80005c8:	17db      	asrs	r3, r3, #31
  80005ca:	1ad3      	subs	r3, r2, r3
  80005cc:	4618      	mov	r0, r3
  80005ce:	f7ff ff9f 	bl	8000510 <setNumberOnClock>
-	setNumberOnClock(hour/2);
- 80005d2:	4b0a      	ldr	r3, [pc, #40]	; (80005fc <init_clock+0x8c>)
+	setNumberOnClock(hour);
+ 80005d2:	4b08      	ldr	r3, [pc, #32]	; (80005f4 <init_clock+0x84>)
  80005d4:	681b      	ldr	r3, [r3, #0]
- 80005d6:	0fda      	lsrs	r2, r3, #31
- 80005d8:	4413      	add	r3, r2
- 80005da:	105b      	asrs	r3, r3, #1
- 80005dc:	4618      	mov	r0, r3
- 80005de:	f7ff ff97 	bl	8000510 <setNumberOnClock>
+ 80005d6:	4618      	mov	r0, r3
+ 80005d8:	f7ff ff9a 	bl	8000510 <setNumberOnClock>
 }
- 80005e2:	bf00      	nop
- 80005e4:	3710      	adds	r7, #16
- 80005e6:	46bd      	mov	sp, r7
- 80005e8:	bd80      	pop	{r7, pc}
- 80005ea:	bf00      	nop
- 80005ec:	200000e0 	.word	0x200000e0
- 80005f0:	200000e1 	.word	0x200000e1
- 80005f4:	200000d4 	.word	0x200000d4
- 80005f8:	200000d8 	.word	0x200000d8
- 80005fc:	200000dc 	.word	0x200000dc
- 8000600:	66666667 	.word	0x66666667
+ 80005dc:	bf00      	nop
+ 80005de:	3710      	adds	r7, #16
+ 80005e0:	46bd      	mov	sp, r7
+ 80005e2:	bd80      	pop	{r7, pc}
+ 80005e4:	200000e0 	.word	0x200000e0
+ 80005e8:	200000e1 	.word	0x200000e1
+ 80005ec:	200000d4 	.word	0x200000d4
+ 80005f0:	200000d8 	.word	0x200000d8
+ 80005f4:	200000dc 	.word	0x200000dc
+ 80005f8:	66666667 	.word	0x66666667
 
-08000604 <setupClock>:
+080005fc <setupClock>:
 // ======= SETUP CLOCK ===========
 void setupClock(int step){
- 8000604:	b580      	push	{r7, lr}
- 8000606:	b082      	sub	sp, #8
- 8000608:	af00      	add	r7, sp, #0
- 800060a:	6078      	str	r0, [r7, #4]
+ 80005fc:	b580      	push	{r7, lr}
+ 80005fe:	b082      	sub	sp, #8
+ 8000600:	af00      	add	r7, sp, #0
+ 8000602:	6078      	str	r0, [r7, #4]
 	if(currentState == NORMAL_STATE) return;
- 800060c:	4b79      	ldr	r3, [pc, #484]	; (80007f4 <setupClock+0x1f0>)
- 800060e:	781b      	ldrb	r3, [r3, #0]
- 8000610:	2b00      	cmp	r3, #0
- 8000612:	f000 80e8 	beq.w	80007e6 <setupClock+0x1e2>
+ 8000604:	4b80      	ldr	r3, [pc, #512]	; (8000808 <setupClock+0x20c>)
+ 8000606:	781b      	ldrb	r3, [r3, #0]
+ 8000608:	2b00      	cmp	r3, #0
+ 800060a:	f000 80f7 	beq.w	80007fc <setupClock+0x200>
 	switch(currentMode){
- 8000616:	4b78      	ldr	r3, [pc, #480]	; (80007f8 <setupClock+0x1f4>)
- 8000618:	781b      	ldrb	r3, [r3, #0]
- 800061a:	2b02      	cmp	r3, #2
- 800061c:	f000 8097 	beq.w	800074e <setupClock+0x14a>
- 8000620:	2b02      	cmp	r3, #2
- 8000622:	f300 80e2 	bgt.w	80007ea <setupClock+0x1e6>
- 8000626:	2b00      	cmp	r3, #0
- 8000628:	d002      	beq.n	8000630 <setupClock+0x2c>
- 800062a:	2b01      	cmp	r3, #1
- 800062c:	d042      	beq.n	80006b4 <setupClock+0xb0>
-				second = 0;
+ 800060e:	4b7f      	ldr	r3, [pc, #508]	; (800080c <setupClock+0x210>)
+ 8000610:	781b      	ldrb	r3, [r3, #0]
+ 8000612:	2b02      	cmp	r3, #2
+ 8000614:	f000 8095 	beq.w	8000742 <setupClock+0x146>
+ 8000618:	2b02      	cmp	r3, #2
+ 800061a:	f300 80f1 	bgt.w	8000800 <setupClock+0x204>
+ 800061e:	2b00      	cmp	r3, #0
+ 8000620:	d002      	beq.n	8000628 <setupClock+0x2c>
+ 8000622:	2b01      	cmp	r3, #1
+ 8000624:	d034      	beq.n	8000690 <setupClock+0x94>
+				}
 			}
 			setNumberOnClock(second / 5);
 			break;
 		default:
 			break;
- 800062e:	e0dc      	b.n	80007ea <setupClock+0x1e6>
-			if(hour/2 != minute/5 && hour/2 != second/5)
- 8000630:	4b72      	ldr	r3, [pc, #456]	; (80007fc <setupClock+0x1f8>)
- 8000632:	681b      	ldr	r3, [r3, #0]
- 8000634:	0fda      	lsrs	r2, r3, #31
- 8000636:	4413      	add	r3, r2
- 8000638:	105b      	asrs	r3, r3, #1
- 800063a:	4619      	mov	r1, r3
- 800063c:	4b70      	ldr	r3, [pc, #448]	; (8000800 <setupClock+0x1fc>)
- 800063e:	681b      	ldr	r3, [r3, #0]
- 8000640:	4a70      	ldr	r2, [pc, #448]	; (8000804 <setupClock+0x200>)
- 8000642:	fb82 0203 	smull	r0, r2, r2, r3
- 8000646:	1052      	asrs	r2, r2, #1
- 8000648:	17db      	asrs	r3, r3, #31
- 800064a:	1ad3      	subs	r3, r2, r3
- 800064c:	4299      	cmp	r1, r3
- 800064e:	d017      	beq.n	8000680 <setupClock+0x7c>
- 8000650:	4b6a      	ldr	r3, [pc, #424]	; (80007fc <setupClock+0x1f8>)
+ 8000626:	e0eb      	b.n	8000800 <setupClock+0x204>
+			if(hour != minute/5 && hour != second/5)
+ 8000628:	4b79      	ldr	r3, [pc, #484]	; (8000810 <setupClock+0x214>)
+ 800062a:	681b      	ldr	r3, [r3, #0]
+ 800062c:	4a79      	ldr	r2, [pc, #484]	; (8000814 <setupClock+0x218>)
+ 800062e:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000632:	1052      	asrs	r2, r2, #1
+ 8000634:	17db      	asrs	r3, r3, #31
+ 8000636:	1ad2      	subs	r2, r2, r3
+ 8000638:	4b77      	ldr	r3, [pc, #476]	; (8000818 <setupClock+0x21c>)
+ 800063a:	681b      	ldr	r3, [r3, #0]
+ 800063c:	429a      	cmp	r2, r3
+ 800063e:	d010      	beq.n	8000662 <setupClock+0x66>
+ 8000640:	4b76      	ldr	r3, [pc, #472]	; (800081c <setupClock+0x220>)
+ 8000642:	681b      	ldr	r3, [r3, #0]
+ 8000644:	4a73      	ldr	r2, [pc, #460]	; (8000814 <setupClock+0x218>)
+ 8000646:	fb82 1203 	smull	r1, r2, r2, r3
+ 800064a:	1052      	asrs	r2, r2, #1
+ 800064c:	17db      	asrs	r3, r3, #31
+ 800064e:	1ad2      	subs	r2, r2, r3
+ 8000650:	4b71      	ldr	r3, [pc, #452]	; (8000818 <setupClock+0x21c>)
  8000652:	681b      	ldr	r3, [r3, #0]
- 8000654:	0fda      	lsrs	r2, r3, #31
- 8000656:	4413      	add	r3, r2
- 8000658:	105b      	asrs	r3, r3, #1
- 800065a:	4619      	mov	r1, r3
- 800065c:	4b6a      	ldr	r3, [pc, #424]	; (8000808 <setupClock+0x204>)
- 800065e:	681b      	ldr	r3, [r3, #0]
- 8000660:	4a68      	ldr	r2, [pc, #416]	; (8000804 <setupClock+0x200>)
- 8000662:	fb82 0203 	smull	r0, r2, r2, r3
- 8000666:	1052      	asrs	r2, r2, #1
- 8000668:	17db      	asrs	r3, r3, #31
- 800066a:	1ad3      	subs	r3, r2, r3
- 800066c:	4299      	cmp	r1, r3
- 800066e:	d007      	beq.n	8000680 <setupClock+0x7c>
-				clearNumberOnClock(hour/2);
- 8000670:	4b62      	ldr	r3, [pc, #392]	; (80007fc <setupClock+0x1f8>)
- 8000672:	681b      	ldr	r3, [r3, #0]
- 8000674:	0fda      	lsrs	r2, r3, #31
- 8000676:	4413      	add	r3, r2
- 8000678:	105b      	asrs	r3, r3, #1
- 800067a:	4618      	mov	r0, r3
- 800067c:	f7ff ff60 	bl	8000540 <clearNumberOnClock>
+ 8000654:	429a      	cmp	r2, r3
+ 8000656:	d004      	beq.n	8000662 <setupClock+0x66>
+				clearNumberOnClock(hour);
+ 8000658:	4b6f      	ldr	r3, [pc, #444]	; (8000818 <setupClock+0x21c>)
+ 800065a:	681b      	ldr	r3, [r3, #0]
+ 800065c:	4618      	mov	r0, r3
+ 800065e:	f7ff ff6f 	bl	8000540 <clearNumberOnClock>
 			hour+=step;
- 8000680:	4b5e      	ldr	r3, [pc, #376]	; (80007fc <setupClock+0x1f8>)
- 8000682:	681a      	ldr	r2, [r3, #0]
- 8000684:	687b      	ldr	r3, [r7, #4]
- 8000686:	4413      	add	r3, r2
- 8000688:	4a5c      	ldr	r2, [pc, #368]	; (80007fc <setupClock+0x1f8>)
- 800068a:	6013      	str	r3, [r2, #0]
-			if(hour > 23 || hour < 0){
- 800068c:	4b5b      	ldr	r3, [pc, #364]	; (80007fc <setupClock+0x1f8>)
- 800068e:	681b      	ldr	r3, [r3, #0]
- 8000690:	2b17      	cmp	r3, #23
- 8000692:	dc03      	bgt.n	800069c <setupClock+0x98>
- 8000694:	4b59      	ldr	r3, [pc, #356]	; (80007fc <setupClock+0x1f8>)
- 8000696:	681b      	ldr	r3, [r3, #0]
- 8000698:	2b00      	cmp	r3, #0
- 800069a:	da02      	bge.n	80006a2 <setupClock+0x9e>
+ 8000662:	4b6d      	ldr	r3, [pc, #436]	; (8000818 <setupClock+0x21c>)
+ 8000664:	681a      	ldr	r2, [r3, #0]
+ 8000666:	687b      	ldr	r3, [r7, #4]
+ 8000668:	4413      	add	r3, r2
+ 800066a:	4a6b      	ldr	r2, [pc, #428]	; (8000818 <setupClock+0x21c>)
+ 800066c:	6013      	str	r3, [r2, #0]
+			if(hour > 12 || hour < 0){
+ 800066e:	4b6a      	ldr	r3, [pc, #424]	; (8000818 <setupClock+0x21c>)
+ 8000670:	681b      	ldr	r3, [r3, #0]
+ 8000672:	2b0c      	cmp	r3, #12
+ 8000674:	dc03      	bgt.n	800067e <setupClock+0x82>
+ 8000676:	4b68      	ldr	r3, [pc, #416]	; (8000818 <setupClock+0x21c>)
+ 8000678:	681b      	ldr	r3, [r3, #0]
+ 800067a:	2b00      	cmp	r3, #0
+ 800067c:	da02      	bge.n	8000684 <setupClock+0x88>
 				hour = 0;
- 800069c:	4b57      	ldr	r3, [pc, #348]	; (80007fc <setupClock+0x1f8>)
- 800069e:	2200      	movs	r2, #0
- 80006a0:	601a      	str	r2, [r3, #0]
-			setNumberOnClock(hour/2);
- 80006a2:	4b56      	ldr	r3, [pc, #344]	; (80007fc <setupClock+0x1f8>)
- 80006a4:	681b      	ldr	r3, [r3, #0]
- 80006a6:	0fda      	lsrs	r2, r3, #31
- 80006a8:	4413      	add	r3, r2
- 80006aa:	105b      	asrs	r3, r3, #1
- 80006ac:	4618      	mov	r0, r3
- 80006ae:	f7ff ff2f 	bl	8000510 <setNumberOnClock>
+ 800067e:	4b66      	ldr	r3, [pc, #408]	; (8000818 <setupClock+0x21c>)
+ 8000680:	2200      	movs	r2, #0
+ 8000682:	601a      	str	r2, [r3, #0]
+			setNumberOnClock(hour);
+ 8000684:	4b64      	ldr	r3, [pc, #400]	; (8000818 <setupClock+0x21c>)
+ 8000686:	681b      	ldr	r3, [r3, #0]
+ 8000688:	4618      	mov	r0, r3
+ 800068a:	f7ff ff41 	bl	8000510 <setNumberOnClock>
 			break;
- 80006b2:	e09b      	b.n	80007ec <setupClock+0x1e8>
-			if(hour/2 != minute/5 && minute/5 != second/5)
- 80006b4:	4b51      	ldr	r3, [pc, #324]	; (80007fc <setupClock+0x1f8>)
- 80006b6:	681b      	ldr	r3, [r3, #0]
- 80006b8:	0fda      	lsrs	r2, r3, #31
- 80006ba:	4413      	add	r3, r2
- 80006bc:	105b      	asrs	r3, r3, #1
- 80006be:	4619      	mov	r1, r3
- 80006c0:	4b4f      	ldr	r3, [pc, #316]	; (8000800 <setupClock+0x1fc>)
- 80006c2:	681b      	ldr	r3, [r3, #0]
- 80006c4:	4a4f      	ldr	r2, [pc, #316]	; (8000804 <setupClock+0x200>)
- 80006c6:	fb82 0203 	smull	r0, r2, r2, r3
- 80006ca:	1052      	asrs	r2, r2, #1
- 80006cc:	17db      	asrs	r3, r3, #31
- 80006ce:	1ad3      	subs	r3, r2, r3
- 80006d0:	4299      	cmp	r1, r3
- 80006d2:	d01c      	beq.n	800070e <setupClock+0x10a>
- 80006d4:	4b4a      	ldr	r3, [pc, #296]	; (8000800 <setupClock+0x1fc>)
- 80006d6:	681b      	ldr	r3, [r3, #0]
- 80006d8:	4a4a      	ldr	r2, [pc, #296]	; (8000804 <setupClock+0x200>)
- 80006da:	fb82 1203 	smull	r1, r2, r2, r3
- 80006de:	1052      	asrs	r2, r2, #1
- 80006e0:	17db      	asrs	r3, r3, #31
- 80006e2:	1ad2      	subs	r2, r2, r3
- 80006e4:	4b48      	ldr	r3, [pc, #288]	; (8000808 <setupClock+0x204>)
- 80006e6:	681b      	ldr	r3, [r3, #0]
- 80006e8:	4946      	ldr	r1, [pc, #280]	; (8000804 <setupClock+0x200>)
- 80006ea:	fb81 0103 	smull	r0, r1, r1, r3
- 80006ee:	1049      	asrs	r1, r1, #1
- 80006f0:	17db      	asrs	r3, r3, #31
- 80006f2:	1acb      	subs	r3, r1, r3
- 80006f4:	429a      	cmp	r2, r3
- 80006f6:	d00a      	beq.n	800070e <setupClock+0x10a>
+ 800068e:	e0b8      	b.n	8000802 <setupClock+0x206>
+			if(hour != minute/5 && minute/5 != second/5)
+ 8000690:	4b5f      	ldr	r3, [pc, #380]	; (8000810 <setupClock+0x214>)
+ 8000692:	681b      	ldr	r3, [r3, #0]
+ 8000694:	4a5f      	ldr	r2, [pc, #380]	; (8000814 <setupClock+0x218>)
+ 8000696:	fb82 1203 	smull	r1, r2, r2, r3
+ 800069a:	1052      	asrs	r2, r2, #1
+ 800069c:	17db      	asrs	r3, r3, #31
+ 800069e:	1ad2      	subs	r2, r2, r3
+ 80006a0:	4b5d      	ldr	r3, [pc, #372]	; (8000818 <setupClock+0x21c>)
+ 80006a2:	681b      	ldr	r3, [r3, #0]
+ 80006a4:	429a      	cmp	r2, r3
+ 80006a6:	d01c      	beq.n	80006e2 <setupClock+0xe6>
+ 80006a8:	4b59      	ldr	r3, [pc, #356]	; (8000810 <setupClock+0x214>)
+ 80006aa:	681b      	ldr	r3, [r3, #0]
+ 80006ac:	4a59      	ldr	r2, [pc, #356]	; (8000814 <setupClock+0x218>)
+ 80006ae:	fb82 1203 	smull	r1, r2, r2, r3
+ 80006b2:	1052      	asrs	r2, r2, #1
+ 80006b4:	17db      	asrs	r3, r3, #31
+ 80006b6:	1ad2      	subs	r2, r2, r3
+ 80006b8:	4b58      	ldr	r3, [pc, #352]	; (800081c <setupClock+0x220>)
+ 80006ba:	681b      	ldr	r3, [r3, #0]
+ 80006bc:	4955      	ldr	r1, [pc, #340]	; (8000814 <setupClock+0x218>)
+ 80006be:	fb81 0103 	smull	r0, r1, r1, r3
+ 80006c2:	1049      	asrs	r1, r1, #1
+ 80006c4:	17db      	asrs	r3, r3, #31
+ 80006c6:	1acb      	subs	r3, r1, r3
+ 80006c8:	429a      	cmp	r2, r3
+ 80006ca:	d00a      	beq.n	80006e2 <setupClock+0xe6>
 				clearNumberOnClock(minute / 5);
- 80006f8:	4b41      	ldr	r3, [pc, #260]	; (8000800 <setupClock+0x1fc>)
- 80006fa:	681b      	ldr	r3, [r3, #0]
- 80006fc:	4a41      	ldr	r2, [pc, #260]	; (8000804 <setupClock+0x200>)
- 80006fe:	fb82 1203 	smull	r1, r2, r2, r3
- 8000702:	1052      	asrs	r2, r2, #1
- 8000704:	17db      	asrs	r3, r3, #31
- 8000706:	1ad3      	subs	r3, r2, r3
- 8000708:	4618      	mov	r0, r3
- 800070a:	f7ff ff19 	bl	8000540 <clearNumberOnClock>
+ 80006cc:	4b50      	ldr	r3, [pc, #320]	; (8000810 <setupClock+0x214>)
+ 80006ce:	681b      	ldr	r3, [r3, #0]
+ 80006d0:	4a50      	ldr	r2, [pc, #320]	; (8000814 <setupClock+0x218>)
+ 80006d2:	fb82 1203 	smull	r1, r2, r2, r3
+ 80006d6:	1052      	asrs	r2, r2, #1
+ 80006d8:	17db      	asrs	r3, r3, #31
+ 80006da:	1ad3      	subs	r3, r2, r3
+ 80006dc:	4618      	mov	r0, r3
+ 80006de:	f7ff ff2f 	bl	8000540 <clearNumberOnClock>
 			minute+=step*5;
- 800070e:	687a      	ldr	r2, [r7, #4]
- 8000710:	4613      	mov	r3, r2
- 8000712:	009b      	lsls	r3, r3, #2
- 8000714:	441a      	add	r2, r3
- 8000716:	4b3a      	ldr	r3, [pc, #232]	; (8000800 <setupClock+0x1fc>)
- 8000718:	681b      	ldr	r3, [r3, #0]
- 800071a:	4413      	add	r3, r2
- 800071c:	4a38      	ldr	r2, [pc, #224]	; (8000800 <setupClock+0x1fc>)
- 800071e:	6013      	str	r3, [r2, #0]
+ 80006e2:	687a      	ldr	r2, [r7, #4]
+ 80006e4:	4613      	mov	r3, r2
+ 80006e6:	009b      	lsls	r3, r3, #2
+ 80006e8:	441a      	add	r2, r3
+ 80006ea:	4b49      	ldr	r3, [pc, #292]	; (8000810 <setupClock+0x214>)
+ 80006ec:	681b      	ldr	r3, [r3, #0]
+ 80006ee:	4413      	add	r3, r2
+ 80006f0:	4a47      	ldr	r2, [pc, #284]	; (8000810 <setupClock+0x214>)
+ 80006f2:	6013      	str	r3, [r2, #0]
 			if(minute > 59 || minute < 0){
- 8000720:	4b37      	ldr	r3, [pc, #220]	; (8000800 <setupClock+0x1fc>)
- 8000722:	681b      	ldr	r3, [r3, #0]
- 8000724:	2b3b      	cmp	r3, #59	; 0x3b
- 8000726:	dc03      	bgt.n	8000730 <setupClock+0x12c>
- 8000728:	4b35      	ldr	r3, [pc, #212]	; (8000800 <setupClock+0x1fc>)
- 800072a:	681b      	ldr	r3, [r3, #0]
- 800072c:	2b00      	cmp	r3, #0
- 800072e:	da02      	bge.n	8000736 <setupClock+0x132>
+ 80006f4:	4b46      	ldr	r3, [pc, #280]	; (8000810 <setupClock+0x214>)
+ 80006f6:	681b      	ldr	r3, [r3, #0]
+ 80006f8:	2b3b      	cmp	r3, #59	; 0x3b
+ 80006fa:	dc03      	bgt.n	8000704 <setupClock+0x108>
+ 80006fc:	4b44      	ldr	r3, [pc, #272]	; (8000810 <setupClock+0x214>)
+ 80006fe:	681b      	ldr	r3, [r3, #0]
+ 8000700:	2b00      	cmp	r3, #0
+ 8000702:	da12      	bge.n	800072a <setupClock+0x12e>
 				minute = 0;
- 8000730:	4b33      	ldr	r3, [pc, #204]	; (8000800 <setupClock+0x1fc>)
- 8000732:	2200      	movs	r2, #0
- 8000734:	601a      	str	r2, [r3, #0]
+ 8000704:	4b42      	ldr	r3, [pc, #264]	; (8000810 <setupClock+0x214>)
+ 8000706:	2200      	movs	r2, #0
+ 8000708:	601a      	str	r2, [r3, #0]
+				hour++;
+ 800070a:	4b43      	ldr	r3, [pc, #268]	; (8000818 <setupClock+0x21c>)
+ 800070c:	681b      	ldr	r3, [r3, #0]
+ 800070e:	3301      	adds	r3, #1
+ 8000710:	4a41      	ldr	r2, [pc, #260]	; (8000818 <setupClock+0x21c>)
+ 8000712:	6013      	str	r3, [r2, #0]
+				if(hour > 12 || hour < 0){
+ 8000714:	4b40      	ldr	r3, [pc, #256]	; (8000818 <setupClock+0x21c>)
+ 8000716:	681b      	ldr	r3, [r3, #0]
+ 8000718:	2b0c      	cmp	r3, #12
+ 800071a:	dc03      	bgt.n	8000724 <setupClock+0x128>
+ 800071c:	4b3e      	ldr	r3, [pc, #248]	; (8000818 <setupClock+0x21c>)
+ 800071e:	681b      	ldr	r3, [r3, #0]
+ 8000720:	2b00      	cmp	r3, #0
+ 8000722:	da02      	bge.n	800072a <setupClock+0x12e>
+					hour = 0;
+ 8000724:	4b3c      	ldr	r3, [pc, #240]	; (8000818 <setupClock+0x21c>)
+ 8000726:	2200      	movs	r2, #0
+ 8000728:	601a      	str	r2, [r3, #0]
 			setNumberOnClock(minute / 5);
- 8000736:	4b32      	ldr	r3, [pc, #200]	; (8000800 <setupClock+0x1fc>)
- 8000738:	681b      	ldr	r3, [r3, #0]
- 800073a:	4a32      	ldr	r2, [pc, #200]	; (8000804 <setupClock+0x200>)
- 800073c:	fb82 1203 	smull	r1, r2, r2, r3
- 8000740:	1052      	asrs	r2, r2, #1
- 8000742:	17db      	asrs	r3, r3, #31
- 8000744:	1ad3      	subs	r3, r2, r3
- 8000746:	4618      	mov	r0, r3
- 8000748:	f7ff fee2 	bl	8000510 <setNumberOnClock>
+ 800072a:	4b39      	ldr	r3, [pc, #228]	; (8000810 <setupClock+0x214>)
+ 800072c:	681b      	ldr	r3, [r3, #0]
+ 800072e:	4a39      	ldr	r2, [pc, #228]	; (8000814 <setupClock+0x218>)
+ 8000730:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000734:	1052      	asrs	r2, r2, #1
+ 8000736:	17db      	asrs	r3, r3, #31
+ 8000738:	1ad3      	subs	r3, r2, r3
+ 800073a:	4618      	mov	r0, r3
+ 800073c:	f7ff fee8 	bl	8000510 <setNumberOnClock>
 			break;
- 800074c:	e04e      	b.n	80007ec <setupClock+0x1e8>
-			if(second/5 != hour/2 && minute/5 != second/5)
- 800074e:	4b2e      	ldr	r3, [pc, #184]	; (8000808 <setupClock+0x204>)
- 8000750:	681b      	ldr	r3, [r3, #0]
- 8000752:	4a2c      	ldr	r2, [pc, #176]	; (8000804 <setupClock+0x200>)
- 8000754:	fb82 1203 	smull	r1, r2, r2, r3
- 8000758:	1052      	asrs	r2, r2, #1
- 800075a:	17db      	asrs	r3, r3, #31
- 800075c:	1ad2      	subs	r2, r2, r3
- 800075e:	4b27      	ldr	r3, [pc, #156]	; (80007fc <setupClock+0x1f8>)
- 8000760:	681b      	ldr	r3, [r3, #0]
- 8000762:	0fd9      	lsrs	r1, r3, #31
- 8000764:	440b      	add	r3, r1
- 8000766:	105b      	asrs	r3, r3, #1
- 8000768:	429a      	cmp	r2, r3
- 800076a:	d01c      	beq.n	80007a6 <setupClock+0x1a2>
- 800076c:	4b24      	ldr	r3, [pc, #144]	; (8000800 <setupClock+0x1fc>)
- 800076e:	681b      	ldr	r3, [r3, #0]
- 8000770:	4a24      	ldr	r2, [pc, #144]	; (8000804 <setupClock+0x200>)
- 8000772:	fb82 1203 	smull	r1, r2, r2, r3
- 8000776:	1052      	asrs	r2, r2, #1
- 8000778:	17db      	asrs	r3, r3, #31
- 800077a:	1ad2      	subs	r2, r2, r3
- 800077c:	4b22      	ldr	r3, [pc, #136]	; (8000808 <setupClock+0x204>)
- 800077e:	681b      	ldr	r3, [r3, #0]
- 8000780:	4920      	ldr	r1, [pc, #128]	; (8000804 <setupClock+0x200>)
- 8000782:	fb81 0103 	smull	r0, r1, r1, r3
- 8000786:	1049      	asrs	r1, r1, #1
- 8000788:	17db      	asrs	r3, r3, #31
- 800078a:	1acb      	subs	r3, r1, r3
- 800078c:	429a      	cmp	r2, r3
- 800078e:	d00a      	beq.n	80007a6 <setupClock+0x1a2>
-			clearNumberOnClock(second / 5);
- 8000790:	4b1d      	ldr	r3, [pc, #116]	; (8000808 <setupClock+0x204>)
- 8000792:	681b      	ldr	r3, [r3, #0]
- 8000794:	4a1b      	ldr	r2, [pc, #108]	; (8000804 <setupClock+0x200>)
- 8000796:	fb82 1203 	smull	r1, r2, r2, r3
- 800079a:	1052      	asrs	r2, r2, #1
- 800079c:	17db      	asrs	r3, r3, #31
- 800079e:	1ad3      	subs	r3, r2, r3
- 80007a0:	4618      	mov	r0, r3
- 80007a2:	f7ff fecd 	bl	8000540 <clearNumberOnClock>
+ 8000740:	e05f      	b.n	8000802 <setupClock+0x206>
+			if(second/5 != hour && minute/5 != second/5)
+ 8000742:	4b36      	ldr	r3, [pc, #216]	; (800081c <setupClock+0x220>)
+ 8000744:	681b      	ldr	r3, [r3, #0]
+ 8000746:	4a33      	ldr	r2, [pc, #204]	; (8000814 <setupClock+0x218>)
+ 8000748:	fb82 1203 	smull	r1, r2, r2, r3
+ 800074c:	1052      	asrs	r2, r2, #1
+ 800074e:	17db      	asrs	r3, r3, #31
+ 8000750:	1ad2      	subs	r2, r2, r3
+ 8000752:	4b31      	ldr	r3, [pc, #196]	; (8000818 <setupClock+0x21c>)
+ 8000754:	681b      	ldr	r3, [r3, #0]
+ 8000756:	429a      	cmp	r2, r3
+ 8000758:	d01c      	beq.n	8000794 <setupClock+0x198>
+ 800075a:	4b2d      	ldr	r3, [pc, #180]	; (8000810 <setupClock+0x214>)
+ 800075c:	681b      	ldr	r3, [r3, #0]
+ 800075e:	4a2d      	ldr	r2, [pc, #180]	; (8000814 <setupClock+0x218>)
+ 8000760:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000764:	1052      	asrs	r2, r2, #1
+ 8000766:	17db      	asrs	r3, r3, #31
+ 8000768:	1ad2      	subs	r2, r2, r3
+ 800076a:	4b2c      	ldr	r3, [pc, #176]	; (800081c <setupClock+0x220>)
+ 800076c:	681b      	ldr	r3, [r3, #0]
+ 800076e:	4929      	ldr	r1, [pc, #164]	; (8000814 <setupClock+0x218>)
+ 8000770:	fb81 0103 	smull	r0, r1, r1, r3
+ 8000774:	1049      	asrs	r1, r1, #1
+ 8000776:	17db      	asrs	r3, r3, #31
+ 8000778:	1acb      	subs	r3, r1, r3
+ 800077a:	429a      	cmp	r2, r3
+ 800077c:	d00a      	beq.n	8000794 <setupClock+0x198>
+				clearNumberOnClock(second / 5);
+ 800077e:	4b27      	ldr	r3, [pc, #156]	; (800081c <setupClock+0x220>)
+ 8000780:	681b      	ldr	r3, [r3, #0]
+ 8000782:	4a24      	ldr	r2, [pc, #144]	; (8000814 <setupClock+0x218>)
+ 8000784:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000788:	1052      	asrs	r2, r2, #1
+ 800078a:	17db      	asrs	r3, r3, #31
+ 800078c:	1ad3      	subs	r3, r2, r3
+ 800078e:	4618      	mov	r0, r3
+ 8000790:	f7ff fed6 	bl	8000540 <clearNumberOnClock>
 			second+=step*5;
- 80007a6:	687a      	ldr	r2, [r7, #4]
- 80007a8:	4613      	mov	r3, r2
- 80007aa:	009b      	lsls	r3, r3, #2
- 80007ac:	441a      	add	r2, r3
- 80007ae:	4b16      	ldr	r3, [pc, #88]	; (8000808 <setupClock+0x204>)
- 80007b0:	681b      	ldr	r3, [r3, #0]
- 80007b2:	4413      	add	r3, r2
- 80007b4:	4a14      	ldr	r2, [pc, #80]	; (8000808 <setupClock+0x204>)
- 80007b6:	6013      	str	r3, [r2, #0]
+ 8000794:	687a      	ldr	r2, [r7, #4]
+ 8000796:	4613      	mov	r3, r2
+ 8000798:	009b      	lsls	r3, r3, #2
+ 800079a:	441a      	add	r2, r3
+ 800079c:	4b1f      	ldr	r3, [pc, #124]	; (800081c <setupClock+0x220>)
+ 800079e:	681b      	ldr	r3, [r3, #0]
+ 80007a0:	4413      	add	r3, r2
+ 80007a2:	4a1e      	ldr	r2, [pc, #120]	; (800081c <setupClock+0x220>)
+ 80007a4:	6013      	str	r3, [r2, #0]
 			if(second > 59 || second < 0){
- 80007b8:	4b13      	ldr	r3, [pc, #76]	; (8000808 <setupClock+0x204>)
- 80007ba:	681b      	ldr	r3, [r3, #0]
- 80007bc:	2b3b      	cmp	r3, #59	; 0x3b
- 80007be:	dc03      	bgt.n	80007c8 <setupClock+0x1c4>
- 80007c0:	4b11      	ldr	r3, [pc, #68]	; (8000808 <setupClock+0x204>)
- 80007c2:	681b      	ldr	r3, [r3, #0]
- 80007c4:	2b00      	cmp	r3, #0
- 80007c6:	da02      	bge.n	80007ce <setupClock+0x1ca>
+ 80007a6:	4b1d      	ldr	r3, [pc, #116]	; (800081c <setupClock+0x220>)
+ 80007a8:	681b      	ldr	r3, [r3, #0]
+ 80007aa:	2b3b      	cmp	r3, #59	; 0x3b
+ 80007ac:	dc03      	bgt.n	80007b6 <setupClock+0x1ba>
+ 80007ae:	4b1b      	ldr	r3, [pc, #108]	; (800081c <setupClock+0x220>)
+ 80007b0:	681b      	ldr	r3, [r3, #0]
+ 80007b2:	2b00      	cmp	r3, #0
+ 80007b4:	da16      	bge.n	80007e4 <setupClock+0x1e8>
 				second = 0;
- 80007c8:	4b0f      	ldr	r3, [pc, #60]	; (8000808 <setupClock+0x204>)
- 80007ca:	2200      	movs	r2, #0
- 80007cc:	601a      	str	r2, [r3, #0]
-			setNumberOnClock(second / 5);
- 80007ce:	4b0e      	ldr	r3, [pc, #56]	; (8000808 <setupClock+0x204>)
+ 80007b6:	4b19      	ldr	r3, [pc, #100]	; (800081c <setupClock+0x220>)
+ 80007b8:	2200      	movs	r2, #0
+ 80007ba:	601a      	str	r2, [r3, #0]
+				minute+=step*5;
+ 80007bc:	687a      	ldr	r2, [r7, #4]
+ 80007be:	4613      	mov	r3, r2
+ 80007c0:	009b      	lsls	r3, r3, #2
+ 80007c2:	441a      	add	r2, r3
+ 80007c4:	4b12      	ldr	r3, [pc, #72]	; (8000810 <setupClock+0x214>)
+ 80007c6:	681b      	ldr	r3, [r3, #0]
+ 80007c8:	4413      	add	r3, r2
+ 80007ca:	4a11      	ldr	r2, [pc, #68]	; (8000810 <setupClock+0x214>)
+ 80007cc:	6013      	str	r3, [r2, #0]
+				if(minute > 59 || minute < 0){
+ 80007ce:	4b10      	ldr	r3, [pc, #64]	; (8000810 <setupClock+0x214>)
  80007d0:	681b      	ldr	r3, [r3, #0]
- 80007d2:	4a0c      	ldr	r2, [pc, #48]	; (8000804 <setupClock+0x200>)
- 80007d4:	fb82 1203 	smull	r1, r2, r2, r3
- 80007d8:	1052      	asrs	r2, r2, #1
- 80007da:	17db      	asrs	r3, r3, #31
- 80007dc:	1ad3      	subs	r3, r2, r3
- 80007de:	4618      	mov	r0, r3
- 80007e0:	f7ff fe96 	bl	8000510 <setNumberOnClock>
+ 80007d2:	2b3b      	cmp	r3, #59	; 0x3b
+ 80007d4:	dc03      	bgt.n	80007de <setupClock+0x1e2>
+ 80007d6:	4b0e      	ldr	r3, [pc, #56]	; (8000810 <setupClock+0x214>)
+ 80007d8:	681b      	ldr	r3, [r3, #0]
+ 80007da:	2b00      	cmp	r3, #0
+ 80007dc:	da02      	bge.n	80007e4 <setupClock+0x1e8>
+					minute=0;
+ 80007de:	4b0c      	ldr	r3, [pc, #48]	; (8000810 <setupClock+0x214>)
+ 80007e0:	2200      	movs	r2, #0
+ 80007e2:	601a      	str	r2, [r3, #0]
+			setNumberOnClock(second / 5);
+ 80007e4:	4b0d      	ldr	r3, [pc, #52]	; (800081c <setupClock+0x220>)
+ 80007e6:	681b      	ldr	r3, [r3, #0]
+ 80007e8:	4a0a      	ldr	r2, [pc, #40]	; (8000814 <setupClock+0x218>)
+ 80007ea:	fb82 1203 	smull	r1, r2, r2, r3
+ 80007ee:	1052      	asrs	r2, r2, #1
+ 80007f0:	17db      	asrs	r3, r3, #31
+ 80007f2:	1ad3      	subs	r3, r2, r3
+ 80007f4:	4618      	mov	r0, r3
+ 80007f6:	f7ff fe8b 	bl	8000510 <setNumberOnClock>
 			break;
- 80007e4:	e002      	b.n	80007ec <setupClock+0x1e8>
+ 80007fa:	e002      	b.n	8000802 <setupClock+0x206>
 	if(currentState == NORMAL_STATE) return;
- 80007e6:	bf00      	nop
- 80007e8:	e000      	b.n	80007ec <setupClock+0x1e8>
+ 80007fc:	bf00      	nop
+ 80007fe:	e000      	b.n	8000802 <setupClock+0x206>
 			break;
- 80007ea:	bf00      	nop
+ 8000800:	bf00      	nop
 	}
 }
- 80007ec:	3708      	adds	r7, #8
- 80007ee:	46bd      	mov	sp, r7
- 80007f0:	bd80      	pop	{r7, pc}
- 80007f2:	bf00      	nop
- 80007f4:	200000e0 	.word	0x200000e0
- 80007f8:	200000e1 	.word	0x200000e1
- 80007fc:	200000dc 	.word	0x200000dc
- 8000800:	200000d8 	.word	0x200000d8
- 8000804:	66666667 	.word	0x66666667
- 8000808:	200000d4 	.word	0x200000d4
+ 8000802:	3708      	adds	r7, #8
+ 8000804:	46bd      	mov	sp, r7
+ 8000806:	bd80      	pop	{r7, pc}
+ 8000808:	200000e0 	.word	0x200000e0
+ 800080c:	200000e1 	.word	0x200000e1
+ 8000810:	200000d8 	.word	0x200000d8
+ 8000814:	66666667 	.word	0x66666667
+ 8000818:	200000dc 	.word	0x200000dc
+ 800081c:	200000d4 	.word	0x200000d4
 
-0800080c <checkButtonClock>:
+08000820 <checkButtonClock>:
 // ====== CHECK BUTTON FUNCTION ======
 void checkButtonClock(){
- 800080c:	b580      	push	{r7, lr}
- 800080e:	af00      	add	r7, sp, #0
+ 8000820:	b580      	push	{r7, lr}
+ 8000822:	af00      	add	r7, sp, #0
 	if(isButtonLongPress(0)){
- 8000810:	2000      	movs	r0, #0
- 8000812:	f7ff fcb5 	bl	8000180 <isButtonLongPress>
- 8000816:	4603      	mov	r3, r0
- 8000818:	2b00      	cmp	r3, #0
- 800081a:	d00c      	beq.n	8000836 <checkButtonClock+0x2a>
+ 8000824:	2000      	movs	r0, #0
+ 8000826:	f7ff fcab 	bl	8000180 <isButtonLongPress>
+ 800082a:	4603      	mov	r3, r0
+ 800082c:	2b00      	cmp	r3, #0
+ 800082e:	d00c      	beq.n	800084a <checkButtonClock+0x2a>
 		currentState = 1 - currentState;
- 800081c:	4b23      	ldr	r3, [pc, #140]	; (80008ac <checkButtonClock+0xa0>)
- 800081e:	781b      	ldrb	r3, [r3, #0]
- 8000820:	f1c3 0301 	rsb	r3, r3, #1
- 8000824:	b2da      	uxtb	r2, r3
- 8000826:	4b21      	ldr	r3, [pc, #132]	; (80008ac <checkButtonClock+0xa0>)
- 8000828:	701a      	strb	r2, [r3, #0]
+ 8000830:	4b23      	ldr	r3, [pc, #140]	; (80008c0 <checkButtonClock+0xa0>)
+ 8000832:	781b      	ldrb	r3, [r3, #0]
+ 8000834:	f1c3 0301 	rsb	r3, r3, #1
+ 8000838:	b2da      	uxtb	r2, r3
+ 800083a:	4b21      	ldr	r3, [pc, #132]	; (80008c0 <checkButtonClock+0xa0>)
+ 800083c:	701a      	strb	r2, [r3, #0]
 		if(currentState == CHANGE_STATE){
- 800082a:	4b20      	ldr	r3, [pc, #128]	; (80008ac <checkButtonClock+0xa0>)
- 800082c:	781b      	ldrb	r3, [r3, #0]
- 800082e:	2b01      	cmp	r3, #1
- 8000830:	d101      	bne.n	8000836 <checkButtonClock+0x2a>
+ 800083e:	4b20      	ldr	r3, [pc, #128]	; (80008c0 <checkButtonClock+0xa0>)
+ 8000840:	781b      	ldrb	r3, [r3, #0]
+ 8000842:	2b01      	cmp	r3, #1
+ 8000844:	d101      	bne.n	800084a <checkButtonClock+0x2a>
 			changeLedMode();
- 8000832:	f7ff fdcd 	bl	80003d0 <changeLedMode>
+ 8000846:	f7ff fdc3 	bl	80003d0 <changeLedMode>
 		}
 	}
 	if(isButtonPress(0)){
- 8000836:	2000      	movs	r0, #0
- 8000838:	f7ff fc88 	bl	800014c <isButtonPress>
- 800083c:	4603      	mov	r3, r0
- 800083e:	2b00      	cmp	r3, #0
- 8000840:	d019      	beq.n	8000876 <checkButtonClock+0x6a>
+ 800084a:	2000      	movs	r0, #0
+ 800084c:	f7ff fc7e 	bl	800014c <isButtonPress>
+ 8000850:	4603      	mov	r3, r0
+ 8000852:	2b00      	cmp	r3, #0
+ 8000854:	d019      	beq.n	800088a <checkButtonClock+0x6a>
 		if(currentState == CHANGE_STATE){
- 8000842:	4b1a      	ldr	r3, [pc, #104]	; (80008ac <checkButtonClock+0xa0>)
- 8000844:	781b      	ldrb	r3, [r3, #0]
- 8000846:	2b01      	cmp	r3, #1
- 8000848:	d12d      	bne.n	80008a6 <checkButtonClock+0x9a>
+ 8000856:	4b1a      	ldr	r3, [pc, #104]	; (80008c0 <checkButtonClock+0xa0>)
+ 8000858:	781b      	ldrb	r3, [r3, #0]
+ 800085a:	2b01      	cmp	r3, #1
+ 800085c:	d12d      	bne.n	80008ba <checkButtonClock+0x9a>
 			currentMode++;
- 800084a:	4b19      	ldr	r3, [pc, #100]	; (80008b0 <checkButtonClock+0xa4>)
- 800084c:	781b      	ldrb	r3, [r3, #0]
- 800084e:	3301      	adds	r3, #1
- 8000850:	b2da      	uxtb	r2, r3
- 8000852:	4b17      	ldr	r3, [pc, #92]	; (80008b0 <checkButtonClock+0xa4>)
- 8000854:	701a      	strb	r2, [r3, #0]
+ 800085e:	4b19      	ldr	r3, [pc, #100]	; (80008c4 <checkButtonClock+0xa4>)
+ 8000860:	781b      	ldrb	r3, [r3, #0]
+ 8000862:	3301      	adds	r3, #1
+ 8000864:	b2da      	uxtb	r2, r3
+ 8000866:	4b17      	ldr	r3, [pc, #92]	; (80008c4 <checkButtonClock+0xa4>)
+ 8000868:	701a      	strb	r2, [r3, #0]
 			currentMode %= 3;
- 8000856:	4b16      	ldr	r3, [pc, #88]	; (80008b0 <checkButtonClock+0xa4>)
- 8000858:	781a      	ldrb	r2, [r3, #0]
- 800085a:	4b16      	ldr	r3, [pc, #88]	; (80008b4 <checkButtonClock+0xa8>)
- 800085c:	fba3 1302 	umull	r1, r3, r3, r2
- 8000860:	0859      	lsrs	r1, r3, #1
- 8000862:	460b      	mov	r3, r1
- 8000864:	005b      	lsls	r3, r3, #1
- 8000866:	440b      	add	r3, r1
- 8000868:	1ad3      	subs	r3, r2, r3
- 800086a:	b2da      	uxtb	r2, r3
- 800086c:	4b10      	ldr	r3, [pc, #64]	; (80008b0 <checkButtonClock+0xa4>)
- 800086e:	701a      	strb	r2, [r3, #0]
+ 800086a:	4b16      	ldr	r3, [pc, #88]	; (80008c4 <checkButtonClock+0xa4>)
+ 800086c:	781a      	ldrb	r2, [r3, #0]
+ 800086e:	4b16      	ldr	r3, [pc, #88]	; (80008c8 <checkButtonClock+0xa8>)
+ 8000870:	fba3 1302 	umull	r1, r3, r3, r2
+ 8000874:	0859      	lsrs	r1, r3, #1
+ 8000876:	460b      	mov	r3, r1
+ 8000878:	005b      	lsls	r3, r3, #1
+ 800087a:	440b      	add	r3, r1
+ 800087c:	1ad3      	subs	r3, r2, r3
+ 800087e:	b2da      	uxtb	r2, r3
+ 8000880:	4b10      	ldr	r3, [pc, #64]	; (80008c4 <checkButtonClock+0xa4>)
+ 8000882:	701a      	strb	r2, [r3, #0]
 			changeLedMode();
- 8000870:	f7ff fdae 	bl	80003d0 <changeLedMode>
+ 8000884:	f7ff fda4 	bl	80003d0 <changeLedMode>
 		setupClock(_step);
 	}
 	else if(isButtonPress(2)){
 		setupClock(-_step);
 	}
 }
- 8000874:	e017      	b.n	80008a6 <checkButtonClock+0x9a>
+ 8000888:	e017      	b.n	80008ba <checkButtonClock+0x9a>
 	else if(isButtonPress(1)){
- 8000876:	2001      	movs	r0, #1
- 8000878:	f7ff fc68 	bl	800014c <isButtonPress>
- 800087c:	4603      	mov	r3, r0
- 800087e:	2b00      	cmp	r3, #0
- 8000880:	d005      	beq.n	800088e <checkButtonClock+0x82>
+ 800088a:	2001      	movs	r0, #1
+ 800088c:	f7ff fc5e 	bl	800014c <isButtonPress>
+ 8000890:	4603      	mov	r3, r0
+ 8000892:	2b00      	cmp	r3, #0
+ 8000894:	d005      	beq.n	80008a2 <checkButtonClock+0x82>
 		setupClock(_step);
- 8000882:	4b0d      	ldr	r3, [pc, #52]	; (80008b8 <checkButtonClock+0xac>)
- 8000884:	681b      	ldr	r3, [r3, #0]
- 8000886:	4618      	mov	r0, r3
- 8000888:	f7ff febc 	bl	8000604 <setupClock>
+ 8000896:	4b0d      	ldr	r3, [pc, #52]	; (80008cc <checkButtonClock+0xac>)
+ 8000898:	681b      	ldr	r3, [r3, #0]
+ 800089a:	4618      	mov	r0, r3
+ 800089c:	f7ff feae 	bl	80005fc <setupClock>
 }
- 800088c:	e00b      	b.n	80008a6 <checkButtonClock+0x9a>
+ 80008a0:	e00b      	b.n	80008ba <checkButtonClock+0x9a>
 	else if(isButtonPress(2)){
- 800088e:	2002      	movs	r0, #2
- 8000890:	f7ff fc5c 	bl	800014c <isButtonPress>
- 8000894:	4603      	mov	r3, r0
- 8000896:	2b00      	cmp	r3, #0
- 8000898:	d005      	beq.n	80008a6 <checkButtonClock+0x9a>
+ 80008a2:	2002      	movs	r0, #2
+ 80008a4:	f7ff fc52 	bl	800014c <isButtonPress>
+ 80008a8:	4603      	mov	r3, r0
+ 80008aa:	2b00      	cmp	r3, #0
+ 80008ac:	d005      	beq.n	80008ba <checkButtonClock+0x9a>
 		setupClock(-_step);
- 800089a:	4b07      	ldr	r3, [pc, #28]	; (80008b8 <checkButtonClock+0xac>)
- 800089c:	681b      	ldr	r3, [r3, #0]
- 800089e:	425b      	negs	r3, r3
- 80008a0:	4618      	mov	r0, r3
- 80008a2:	f7ff feaf 	bl	8000604 <setupClock>
+ 80008ae:	4b07      	ldr	r3, [pc, #28]	; (80008cc <checkButtonClock+0xac>)
+ 80008b0:	681b      	ldr	r3, [r3, #0]
+ 80008b2:	425b      	negs	r3, r3
+ 80008b4:	4618      	mov	r0, r3
+ 80008b6:	f7ff fea1 	bl	80005fc <setupClock>
 }
- 80008a6:	bf00      	nop
- 80008a8:	bd80      	pop	{r7, pc}
- 80008aa:	bf00      	nop
- 80008ac:	200000e0 	.word	0x200000e0
- 80008b0:	200000e1 	.word	0x200000e1
- 80008b4:	aaaaaaab 	.word	0xaaaaaaab
- 80008b8:	20000054 	.word	0x20000054
+ 80008ba:	bf00      	nop
+ 80008bc:	bd80      	pop	{r7, pc}
+ 80008be:	bf00      	nop
+ 80008c0:	200000e0 	.word	0x200000e0
+ 80008c4:	200000e1 	.word	0x200000e1
+ 80008c8:	aaaaaaab 	.word	0xaaaaaaab
+ 80008cc:	20000054 	.word	0x20000054
 
-080008bc <fsm_clock>:
+080008d0 <fsm_clock>:
 // ======= FSM FUNCTION =======
 void fsm_clock(){
- 80008bc:	b580      	push	{r7, lr}
- 80008be:	af00      	add	r7, sp, #0
+ 80008d0:	b580      	push	{r7, lr}
+ 80008d2:	af00      	add	r7, sp, #0
 	if(currentState == CHANGE_STATE) return;
- 80008c0:	4b46      	ldr	r3, [pc, #280]	; (80009dc <fsm_clock+0x120>)
- 80008c2:	781b      	ldrb	r3, [r3, #0]
- 80008c4:	2b01      	cmp	r3, #1
- 80008c6:	f000 8087 	beq.w	80009d8 <fsm_clock+0x11c>
+ 80008d4:	4b41      	ldr	r3, [pc, #260]	; (80009dc <fsm_clock+0x10c>)
+ 80008d6:	781b      	ldrb	r3, [r3, #0]
+ 80008d8:	2b01      	cmp	r3, #1
+ 80008da:	d07d      	beq.n	80009d8 <fsm_clock+0x108>
 	offAllLedMode();
- 80008ca:	f7ff fd69 	bl	80003a0 <offAllLedMode>
+ 80008dc:	f7ff fd60 	bl	80003a0 <offAllLedMode>
 	currentMode = CHANGE_HOUR;
- 80008ce:	4b44      	ldr	r3, [pc, #272]	; (80009e0 <fsm_clock+0x124>)
- 80008d0:	2200      	movs	r2, #0
- 80008d2:	701a      	strb	r2, [r3, #0]
-	if (second/5 != minute/5 && second/5 != hour/2)
- 80008d4:	4b43      	ldr	r3, [pc, #268]	; (80009e4 <fsm_clock+0x128>)
- 80008d6:	681b      	ldr	r3, [r3, #0]
- 80008d8:	4a43      	ldr	r2, [pc, #268]	; (80009e8 <fsm_clock+0x12c>)
- 80008da:	fb82 1203 	smull	r1, r2, r2, r3
- 80008de:	1052      	asrs	r2, r2, #1
- 80008e0:	17db      	asrs	r3, r3, #31
- 80008e2:	1ad2      	subs	r2, r2, r3
- 80008e4:	4b41      	ldr	r3, [pc, #260]	; (80009ec <fsm_clock+0x130>)
- 80008e6:	681b      	ldr	r3, [r3, #0]
- 80008e8:	493f      	ldr	r1, [pc, #252]	; (80009e8 <fsm_clock+0x12c>)
- 80008ea:	fb81 0103 	smull	r0, r1, r1, r3
- 80008ee:	1049      	asrs	r1, r1, #1
- 80008f0:	17db      	asrs	r3, r3, #31
- 80008f2:	1acb      	subs	r3, r1, r3
- 80008f4:	429a      	cmp	r2, r3
- 80008f6:	d019      	beq.n	800092c <fsm_clock+0x70>
- 80008f8:	4b3a      	ldr	r3, [pc, #232]	; (80009e4 <fsm_clock+0x128>)
- 80008fa:	681b      	ldr	r3, [r3, #0]
- 80008fc:	4a3a      	ldr	r2, [pc, #232]	; (80009e8 <fsm_clock+0x12c>)
- 80008fe:	fb82 1203 	smull	r1, r2, r2, r3
- 8000902:	1052      	asrs	r2, r2, #1
- 8000904:	17db      	asrs	r3, r3, #31
- 8000906:	1ad2      	subs	r2, r2, r3
- 8000908:	4b39      	ldr	r3, [pc, #228]	; (80009f0 <fsm_clock+0x134>)
- 800090a:	681b      	ldr	r3, [r3, #0]
- 800090c:	0fd9      	lsrs	r1, r3, #31
- 800090e:	440b      	add	r3, r1
- 8000910:	105b      	asrs	r3, r3, #1
- 8000912:	429a      	cmp	r2, r3
- 8000914:	d00a      	beq.n	800092c <fsm_clock+0x70>
+ 80008e0:	4b3f      	ldr	r3, [pc, #252]	; (80009e0 <fsm_clock+0x110>)
+ 80008e2:	2200      	movs	r2, #0
+ 80008e4:	701a      	strb	r2, [r3, #0]
+	if (second/5 != minute/5 && second/5 != hour)
+ 80008e6:	4b3f      	ldr	r3, [pc, #252]	; (80009e4 <fsm_clock+0x114>)
+ 80008e8:	681b      	ldr	r3, [r3, #0]
+ 80008ea:	4a3f      	ldr	r2, [pc, #252]	; (80009e8 <fsm_clock+0x118>)
+ 80008ec:	fb82 1203 	smull	r1, r2, r2, r3
+ 80008f0:	1052      	asrs	r2, r2, #1
+ 80008f2:	17db      	asrs	r3, r3, #31
+ 80008f4:	1ad2      	subs	r2, r2, r3
+ 80008f6:	4b3d      	ldr	r3, [pc, #244]	; (80009ec <fsm_clock+0x11c>)
+ 80008f8:	681b      	ldr	r3, [r3, #0]
+ 80008fa:	493b      	ldr	r1, [pc, #236]	; (80009e8 <fsm_clock+0x118>)
+ 80008fc:	fb81 0103 	smull	r0, r1, r1, r3
+ 8000900:	1049      	asrs	r1, r1, #1
+ 8000902:	17db      	asrs	r3, r3, #31
+ 8000904:	1acb      	subs	r3, r1, r3
+ 8000906:	429a      	cmp	r2, r3
+ 8000908:	d016      	beq.n	8000938 <fsm_clock+0x68>
+ 800090a:	4b36      	ldr	r3, [pc, #216]	; (80009e4 <fsm_clock+0x114>)
+ 800090c:	681b      	ldr	r3, [r3, #0]
+ 800090e:	4a36      	ldr	r2, [pc, #216]	; (80009e8 <fsm_clock+0x118>)
+ 8000910:	fb82 1203 	smull	r1, r2, r2, r3
+ 8000914:	1052      	asrs	r2, r2, #1
+ 8000916:	17db      	asrs	r3, r3, #31
+ 8000918:	1ad2      	subs	r2, r2, r3
+ 800091a:	4b35      	ldr	r3, [pc, #212]	; (80009f0 <fsm_clock+0x120>)
+ 800091c:	681b      	ldr	r3, [r3, #0]
+ 800091e:	429a      	cmp	r2, r3
+ 8000920:	d00a      	beq.n	8000938 <fsm_clock+0x68>
 	{
 	  clearNumberOnClock(second/5);
- 8000916:	4b33      	ldr	r3, [pc, #204]	; (80009e4 <fsm_clock+0x128>)
- 8000918:	681b      	ldr	r3, [r3, #0]
- 800091a:	4a33      	ldr	r2, [pc, #204]	; (80009e8 <fsm_clock+0x12c>)
- 800091c:	fb82 1203 	smull	r1, r2, r2, r3
- 8000920:	1052      	asrs	r2, r2, #1
- 8000922:	17db      	asrs	r3, r3, #31
- 8000924:	1ad3      	subs	r3, r2, r3
- 8000926:	4618      	mov	r0, r3
- 8000928:	f7ff fe0a 	bl	8000540 <clearNumberOnClock>
+ 8000922:	4b30      	ldr	r3, [pc, #192]	; (80009e4 <fsm_clock+0x114>)
+ 8000924:	681b      	ldr	r3, [r3, #0]
+ 8000926:	4a30      	ldr	r2, [pc, #192]	; (80009e8 <fsm_clock+0x118>)
+ 8000928:	fb82 1203 	smull	r1, r2, r2, r3
+ 800092c:	1052      	asrs	r2, r2, #1
+ 800092e:	17db      	asrs	r3, r3, #31
+ 8000930:	1ad3      	subs	r3, r2, r3
+ 8000932:	4618      	mov	r0, r3
+ 8000934:	f7ff fe04 	bl	8000540 <clearNumberOnClock>
 	}
 	second++;
- 800092c:	4b2d      	ldr	r3, [pc, #180]	; (80009e4 <fsm_clock+0x128>)
- 800092e:	681b      	ldr	r3, [r3, #0]
- 8000930:	3301      	adds	r3, #1
- 8000932:	4a2c      	ldr	r2, [pc, #176]	; (80009e4 <fsm_clock+0x128>)
- 8000934:	6013      	str	r3, [r2, #0]
+ 8000938:	4b2a      	ldr	r3, [pc, #168]	; (80009e4 <fsm_clock+0x114>)
+ 800093a:	681b      	ldr	r3, [r3, #0]
+ 800093c:	3301      	adds	r3, #1
+ 800093e:	4a29      	ldr	r2, [pc, #164]	; (80009e4 <fsm_clock+0x114>)
+ 8000940:	6013      	str	r3, [r2, #0]
 	if (second > 59)
- 8000936:	4b2b      	ldr	r3, [pc, #172]	; (80009e4 <fsm_clock+0x128>)
- 8000938:	681b      	ldr	r3, [r3, #0]
- 800093a:	2b3b      	cmp	r3, #59	; 0x3b
- 800093c:	dd12      	ble.n	8000964 <fsm_clock+0xa8>
+ 8000942:	4b28      	ldr	r3, [pc, #160]	; (80009e4 <fsm_clock+0x114>)
+ 8000944:	681b      	ldr	r3, [r3, #0]
+ 8000946:	2b3b      	cmp	r3, #59	; 0x3b
+ 8000948:	dd12      	ble.n	8000970 <fsm_clock+0xa0>
 	{
 	  second = 0;
- 800093e:	4b29      	ldr	r3, [pc, #164]	; (80009e4 <fsm_clock+0x128>)
- 8000940:	2200      	movs	r2, #0
- 8000942:	601a      	str	r2, [r3, #0]
+ 800094a:	4b26      	ldr	r3, [pc, #152]	; (80009e4 <fsm_clock+0x114>)
+ 800094c:	2200      	movs	r2, #0
+ 800094e:	601a      	str	r2, [r3, #0]
 	  clearNumberOnClock(minute/5);
- 8000944:	4b29      	ldr	r3, [pc, #164]	; (80009ec <fsm_clock+0x130>)
- 8000946:	681b      	ldr	r3, [r3, #0]
- 8000948:	4a27      	ldr	r2, [pc, #156]	; (80009e8 <fsm_clock+0x12c>)
- 800094a:	fb82 1203 	smull	r1, r2, r2, r3
- 800094e:	1052      	asrs	r2, r2, #1
- 8000950:	17db      	asrs	r3, r3, #31
- 8000952:	1ad3      	subs	r3, r2, r3
- 8000954:	4618      	mov	r0, r3
- 8000956:	f7ff fdf3 	bl	8000540 <clearNumberOnClock>
+ 8000950:	4b26      	ldr	r3, [pc, #152]	; (80009ec <fsm_clock+0x11c>)
+ 8000952:	681b      	ldr	r3, [r3, #0]
+ 8000954:	4a24      	ldr	r2, [pc, #144]	; (80009e8 <fsm_clock+0x118>)
+ 8000956:	fb82 1203 	smull	r1, r2, r2, r3
+ 800095a:	1052      	asrs	r2, r2, #1
+ 800095c:	17db      	asrs	r3, r3, #31
+ 800095e:	1ad3      	subs	r3, r2, r3
+ 8000960:	4618      	mov	r0, r3
+ 8000962:	f7ff fded 	bl	8000540 <clearNumberOnClock>
 	  minute+=5;
- 800095a:	4b24      	ldr	r3, [pc, #144]	; (80009ec <fsm_clock+0x130>)
- 800095c:	681b      	ldr	r3, [r3, #0]
- 800095e:	3305      	adds	r3, #5
- 8000960:	4a22      	ldr	r2, [pc, #136]	; (80009ec <fsm_clock+0x130>)
- 8000962:	6013      	str	r3, [r2, #0]
+ 8000966:	4b21      	ldr	r3, [pc, #132]	; (80009ec <fsm_clock+0x11c>)
+ 8000968:	681b      	ldr	r3, [r3, #0]
+ 800096a:	3305      	adds	r3, #5
+ 800096c:	4a1f      	ldr	r2, [pc, #124]	; (80009ec <fsm_clock+0x11c>)
+ 800096e:	6013      	str	r3, [r2, #0]
 	}
 	if (minute > 59)
- 8000964:	4b21      	ldr	r3, [pc, #132]	; (80009ec <fsm_clock+0x130>)
- 8000966:	681b      	ldr	r3, [r3, #0]
- 8000968:	2b3b      	cmp	r3, #59	; 0x3b
- 800096a:	dd0f      	ble.n	800098c <fsm_clock+0xd0>
+ 8000970:	4b1e      	ldr	r3, [pc, #120]	; (80009ec <fsm_clock+0x11c>)
+ 8000972:	681b      	ldr	r3, [r3, #0]
+ 8000974:	2b3b      	cmp	r3, #59	; 0x3b
+ 8000976:	dd0c      	ble.n	8000992 <fsm_clock+0xc2>
 	{
 	  minute = 0;
- 800096c:	4b1f      	ldr	r3, [pc, #124]	; (80009ec <fsm_clock+0x130>)
- 800096e:	2200      	movs	r2, #0
- 8000970:	601a      	str	r2, [r3, #0]
-	  clearNumberOnClock(hour/2);
- 8000972:	4b1f      	ldr	r3, [pc, #124]	; (80009f0 <fsm_clock+0x134>)
- 8000974:	681b      	ldr	r3, [r3, #0]
- 8000976:	0fda      	lsrs	r2, r3, #31
- 8000978:	4413      	add	r3, r2
- 800097a:	105b      	asrs	r3, r3, #1
- 800097c:	4618      	mov	r0, r3
- 800097e:	f7ff fddf 	bl	8000540 <clearNumberOnClock>
-	  hour+=2;
- 8000982:	4b1b      	ldr	r3, [pc, #108]	; (80009f0 <fsm_clock+0x134>)
- 8000984:	681b      	ldr	r3, [r3, #0]
- 8000986:	3302      	adds	r3, #2
- 8000988:	4a19      	ldr	r2, [pc, #100]	; (80009f0 <fsm_clock+0x134>)
- 800098a:	6013      	str	r3, [r2, #0]
+ 8000978:	4b1c      	ldr	r3, [pc, #112]	; (80009ec <fsm_clock+0x11c>)
+ 800097a:	2200      	movs	r2, #0
+ 800097c:	601a      	str	r2, [r3, #0]
+	  clearNumberOnClock(hour);
+ 800097e:	4b1c      	ldr	r3, [pc, #112]	; (80009f0 <fsm_clock+0x120>)
+ 8000980:	681b      	ldr	r3, [r3, #0]
+ 8000982:	4618      	mov	r0, r3
+ 8000984:	f7ff fddc 	bl	8000540 <clearNumberOnClock>
+	  hour+=1;
+ 8000988:	4b19      	ldr	r3, [pc, #100]	; (80009f0 <fsm_clock+0x120>)
+ 800098a:	681b      	ldr	r3, [r3, #0]
+ 800098c:	3301      	adds	r3, #1
+ 800098e:	4a18      	ldr	r2, [pc, #96]	; (80009f0 <fsm_clock+0x120>)
+ 8000990:	6013      	str	r3, [r2, #0]
 	}
-	if (hour > 23)
- 800098c:	4b18      	ldr	r3, [pc, #96]	; (80009f0 <fsm_clock+0x134>)
- 800098e:	681b      	ldr	r3, [r3, #0]
- 8000990:	2b17      	cmp	r3, #23
- 8000992:	dd02      	ble.n	800099a <fsm_clock+0xde>
+	if (hour > 12)
+ 8000992:	4b17      	ldr	r3, [pc, #92]	; (80009f0 <fsm_clock+0x120>)
+ 8000994:	681b      	ldr	r3, [r3, #0]
+ 8000996:	2b0c      	cmp	r3, #12
+ 8000998:	dd02      	ble.n	80009a0 <fsm_clock+0xd0>
 	  hour = 0;
- 8000994:	4b16      	ldr	r3, [pc, #88]	; (80009f0 <fsm_clock+0x134>)
- 8000996:	2200      	movs	r2, #0
- 8000998:	601a      	str	r2, [r3, #0]
-	setNumberOnClock(hour/2);
- 800099a:	4b15      	ldr	r3, [pc, #84]	; (80009f0 <fsm_clock+0x134>)
- 800099c:	681b      	ldr	r3, [r3, #0]
- 800099e:	0fda      	lsrs	r2, r3, #31
- 80009a0:	4413      	add	r3, r2
- 80009a2:	105b      	asrs	r3, r3, #1
+ 800099a:	4b15      	ldr	r3, [pc, #84]	; (80009f0 <fsm_clock+0x120>)
+ 800099c:	2200      	movs	r2, #0
+ 800099e:	601a      	str	r2, [r3, #0]
+	setNumberOnClock(hour);
+ 80009a0:	4b13      	ldr	r3, [pc, #76]	; (80009f0 <fsm_clock+0x120>)
+ 80009a2:	681b      	ldr	r3, [r3, #0]
  80009a4:	4618      	mov	r0, r3
  80009a6:	f7ff fdb3 	bl	8000510 <setNumberOnClock>
 	setNumberOnClock(minute/5);
- 80009aa:	4b10      	ldr	r3, [pc, #64]	; (80009ec <fsm_clock+0x130>)
+ 80009aa:	4b10      	ldr	r3, [pc, #64]	; (80009ec <fsm_clock+0x11c>)
  80009ac:	681b      	ldr	r3, [r3, #0]
- 80009ae:	4a0e      	ldr	r2, [pc, #56]	; (80009e8 <fsm_clock+0x12c>)
+ 80009ae:	4a0e      	ldr	r2, [pc, #56]	; (80009e8 <fsm_clock+0x118>)
  80009b0:	fb82 1203 	smull	r1, r2, r2, r3
  80009b4:	1052      	asrs	r2, r2, #1
  80009b6:	17db      	asrs	r3, r3, #31
@@ -1289,16 +1297,16 @@ void fsm_clock(){
  80009ba:	4618      	mov	r0, r3
  80009bc:	f7ff fda8 	bl	8000510 <setNumberOnClock>
 	setNumberOnClock(second/5);
- 80009c0:	4b08      	ldr	r3, [pc, #32]	; (80009e4 <fsm_clock+0x128>)
+ 80009c0:	4b08      	ldr	r3, [pc, #32]	; (80009e4 <fsm_clock+0x114>)
  80009c2:	681b      	ldr	r3, [r3, #0]
- 80009c4:	4a08      	ldr	r2, [pc, #32]	; (80009e8 <fsm_clock+0x12c>)
+ 80009c4:	4a08      	ldr	r2, [pc, #32]	; (80009e8 <fsm_clock+0x118>)
  80009c6:	fb82 1203 	smull	r1, r2, r2, r3
  80009ca:	1052      	asrs	r2, r2, #1
  80009cc:	17db      	asrs	r3, r3, #31
  80009ce:	1ad3      	subs	r3, r2, r3
  80009d0:	4618      	mov	r0, r3
  80009d2:	f7ff fd9d 	bl	8000510 <setNumberOnClock>
- 80009d6:	e000      	b.n	80009da <fsm_clock+0x11e>
+ 80009d6:	e000      	b.n	80009da <fsm_clock+0x10a>
 	if(currentState == CHANGE_STATE) return;
  80009d8:	bf00      	nop
 }
@@ -1368,13 +1376,13 @@ int main(void)
  8000a28:	2b01      	cmp	r3, #1
  8000a2a:	d104      	bne.n	8000a36 <main+0x42>
 		  fsm_clock();
- 8000a2c:	f7ff ff46 	bl	80008bc <fsm_clock>
+ 8000a2c:	f7ff ff50 	bl	80008d0 <fsm_clock>
 		  setTimer1(100);
  8000a30:	2064      	movs	r0, #100	; 0x64
  8000a32:	f000 f9bf 	bl	8000db4 <setTimer1>
 	  }
 	  checkButtonClock();
- 8000a36:	f7ff fee9 	bl	800080c <checkButtonClock>
+ 8000a36:	f7ff fef3 	bl	8000820 <checkButtonClock>
 	  if(timer1_flag == 1){
  8000a3a:	e7f3      	b.n	8000a24 <main+0x30>
  8000a3c:	200000e4 	.word	0x200000e4

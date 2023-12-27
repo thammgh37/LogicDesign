@@ -1,9 +1,4 @@
-../Core/Src/fsm_clock.c:30:6:offAllLedMode	8	static
-../Core/Src/fsm_clock.c:35:6:changeLedMode	8	static
-../Core/Src/fsm_clock.c:54:6:clearAllCLock	8	static
-../Core/Src/fsm_clock.c:69:6:setNumberOnClock	16	static
-../Core/Src/fsm_clock.c:73:6:clearNumberOnClock	16	static
-../Core/Src/fsm_clock.c:77:6:init_clock	24	static
-../Core/Src/fsm_clock.c:91:6:setupClock	16	static
-../Core/Src/fsm_clock.c:126:6:checkButtonClock	8	static
-../Core/Src/fsm_clock.c:148:6:fsm_clock	8	static
+../Core/Src/fsm_clock.c:15:6:init_clock	24	static
+../Core/Src/fsm_clock.c:29:6:setupClock	16	static
+../Core/Src/fsm_clock.c:105:6:checkButtonClock	8	static
+../Core/Src/fsm_clock.c:127:6:fsm_clock	8	static

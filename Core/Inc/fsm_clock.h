@@ -11,7 +11,19 @@
 #include "button.h"
 #include "main.h"
 #include "timer.h"
+#include "driver.h"
 
+extern enum ClockState{
+	NORMAL_STATE,
+	CHANGE_STATE
+};
+extern enum ClockMode{
+	CHANGE_HOUR,
+	CHANGE_MINUTE,
+	CHANGE_SECOND
+};
+extern enum ClockState currentState;
+extern enum ClockMode currentMode;
 void init_clock(int,int,int);
 void fsm_clock();
 void checkButtonClock();

@@ -1,0 +1,5 @@
+../Core/Src/driver.c:16:6:offAllLedMode	8	static
+../Core/Src/driver.c:21:6:changeLedMode	8	static
+../Core/Src/driver.c:40:6:clearAllCLock	8	static
+../Core/Src/driver.c:56:6:setNumberOnClock	16	static
+../Core/Src/driver.c:60:6:clearNumberOnClock	16	static

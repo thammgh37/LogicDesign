@@ -81,7 +81,7 @@ void button_reading()
                 if (current_button_state[i] == PRESS_STATE)
                 {
                     button_state_save[i] = BUTTON_IS_PRESSED;
-                	button_flag[i] = 1;
+
                 }
                 break;
 
@@ -89,6 +89,8 @@ void button_reading()
                 /* code */
             	if (current_button_state[i] == RELEASED_STATE)
 			   {
+            		button_flag[i] = 1;
+            		counter_for_button_pressed[i] = 0;
 				   button_state_save[i] = BUTTON_IS_RELEASED;
 				   return;
 			   }

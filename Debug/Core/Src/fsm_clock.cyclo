@@ -1,9 +1,4 @@
-../Core/Src/fsm_clock.c:30:6:offAllLedMode	1
-../Core/Src/fsm_clock.c:35:6:changeLedMode	5
-../Core/Src/fsm_clock.c:54:6:clearAllCLock	1
-../Core/Src/fsm_clock.c:69:6:setNumberOnClock	1
-../Core/Src/fsm_clock.c:73:6:clearNumberOnClock	1
-../Core/Src/fsm_clock.c:77:6:init_clock	1
-../Core/Src/fsm_clock.c:91:6:setupClock	18
-../Core/Src/fsm_clock.c:126:6:checkButtonClock	7
-../Core/Src/fsm_clock.c:148:6:fsm_clock	7
+../Core/Src/fsm_clock.c:15:6:init_clock	1
+../Core/Src/fsm_clock.c:29:6:setupClock	24
+../Core/Src/fsm_clock.c:105:6:checkButtonClock	7
+../Core/Src/fsm_clock.c:127:6:fsm_clock	7

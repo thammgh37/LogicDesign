@@ -34,37 +34,37 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := DA_MCU_NEW
+BUILD_ARTIFACT_NAME := DA_MCU_Ver2
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-DA_MCU_NEW.elf \
+DA_MCU_Ver2.elf \
 
 MAP_FILES += \
-DA_MCU_NEW.map \
+DA_MCU_Ver2.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-DA_MCU_NEW.list \
+DA_MCU_Ver2.list \
 
 OBJCOPY_HEX += \
-DA_MCU_NEW.hex \
+DA_MCU_Ver2.hex \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: DA_MCU_NEW.elf secondary-outputs
+main-build: DA_MCU_Ver2.elf secondary-outputs
 
 # Tool invocations
-DA_MCU_NEW.elf DA_MCU_NEW.map: $(OBJS) $(USER_OBJS) /Users/phongtran/Documents/STM32CubeIDE/workspace_1.13.2/DA_MCU_NEW/STM32F103RBHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "DA_MCU_NEW.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/Users/phongtran/Documents/STM32CubeIDE/workspace_1.13.2/DA_MCU_NEW/STM32F103RBHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DA_MCU_NEW.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+DA_MCU_Ver2.elf DA_MCU_Ver2.map: $(OBJS) $(USER_OBJS) /Users/phongtran/Documents/STM32CubeIDE/workspace_1.13.2/DA_MCU_Ver2/STM32F103RBHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "DA_MCU_Ver2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/Users/phongtran/Documents/STM32CubeIDE/workspace_1.13.2/DA_MCU_Ver2/STM32F103RBHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DA_MCU_Ver2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -73,19 +73,19 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-DA_MCU_NEW.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "DA_MCU_NEW.list"
+DA_MCU_Ver2.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "DA_MCU_Ver2.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-DA_MCU_NEW.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "DA_MCU_NEW.hex"
+DA_MCU_Ver2.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "DA_MCU_Ver2.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) DA_MCU_NEW.elf DA_MCU_NEW.hex DA_MCU_NEW.list DA_MCU_NEW.map default.size.stdout
+	-$(RM) DA_MCU_Ver2.elf DA_MCU_Ver2.hex DA_MCU_Ver2.list DA_MCU_Ver2.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
