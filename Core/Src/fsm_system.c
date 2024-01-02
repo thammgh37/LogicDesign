@@ -62,6 +62,7 @@ void fsmSystemRun(){
 	switch (state) {
 		case INIT:
 			state = NORMAL;
+			setTimer2(10);
 			setTimer3(100);
 			break;
 		case NORMAL:

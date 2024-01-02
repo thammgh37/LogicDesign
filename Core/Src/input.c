@@ -92,7 +92,7 @@ void readPin(){
 				}
 				break;
 
-			case BUTTON_LONG_PRESS:
+			case BUTTON_IS_LONG_PRESSED:
 				countLongPress[i]++;
 				if (countLongPress[i] >= 200 ){
 					longPressFlag[i] = 1;
