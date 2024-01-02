@@ -1,0 +1,4 @@
+display.c:12:6:display7SEG	16	static
+display.c:107:6:setLedMode	16	static
+display.c:129:6:update7SEG	16	static
+display.c:161:6:displayClock	8	static
