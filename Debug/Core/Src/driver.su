@@ -9,3 +9,4 @@ driver.c:66:6:blink_green1_red2	8	static
 driver.c:74:6:display_led_7seg	16	static
 driver.c:171:6:control_led_7seg	8	static
 driver.c:187:6:turn_off_led_7seg	8	static
+driver.c:191:6:turn_on_led_7seg	8	static

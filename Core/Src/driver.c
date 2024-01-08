@@ -188,3 +188,7 @@ void turn_off_led_7seg(){
 	HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, SET);
 	HAL_GPIO_WritePin(ENM1_GPIO_Port, ENM1_Pin, SET);
 }
+void turn_on_led_7seg(){
+	HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, RESET);
+	HAL_GPIO_WritePin(ENM1_GPIO_Port, ENM1_Pin, RESET);
+}

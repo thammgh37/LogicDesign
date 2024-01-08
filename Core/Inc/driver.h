@@ -22,4 +22,5 @@ void blink_green1_red2();
 void display_led_7seg(int num);
 void control_led_7seg();
 void turn_off_led_7seg();
+void turn_on_led_7seg();
 #endif /* INC_DRIVER_H_ */

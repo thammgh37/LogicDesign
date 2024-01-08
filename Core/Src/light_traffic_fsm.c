@@ -22,11 +22,12 @@ void light_traffic_fsm(){
 		if(is_button_pressed_hold(0)){
 			status = BLINK_YELLOW_MODE;
 			turn_on_yellow();
-			turn_off_led_7seg();
 			setTimer1(500);
 		}
 		break;
 	case BLINK_YELLOW_MODE:
+		turn_on_led_7seg();
+		display_led_7seg(0);
 		if(timer1_flag == 1){
 			setTimer1(500);
 			blink_yellow();
