@@ -7,10 +7,10 @@
 
 #ifndef INC_DISPLAY_LED_MATRIX_H_
 #define INC_DISPLAY_LED_MATRIX_H_
+#include "driver.h"
 #include "main.h"
 #include "software_timer.h"
 #include "global.h"
-#include "led_matrix_driver.h"
 
 
 void displayLedMatrix(int index1, int index2);

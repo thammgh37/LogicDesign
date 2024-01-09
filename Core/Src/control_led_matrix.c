@@ -39,27 +39,24 @@ void controlLedMatrix(){
 		case INIT:
 			status = NORMAL_MODE;
 			set_state();
-			setTimer3(500);//0.5s
 			mode_char = A;
 			mode_animation = stable;
 			break;
 		case NORMAL_MODE:
 			 scan_matrix();
-			 blink_led_mode();
+			 led_normal_on();
 			  if(is_button_pressed_once(0) || is_button_pressed_hold(0)){
 				  status = SET_CHAR;
 				  set_state();
-				  setTimer3(500);//0.5s
 				  reset_all_button();
 			  }
 			  break;
 		case SET_CHAR:
 			 scan_matrix();
-			 blink_led_mode();
+			 led_char_on();
 			  if(is_button_pressed_once(0) || is_button_pressed_hold(0)){
 				  status = SET_ANIMATION;
 				  set_state();
-				  setTimer3(500);//0.5s
 			  }
 			  if(is_button_pressed_once(1) || is_button_pressed_hold(1)){
 				  mode_char++;
@@ -69,11 +66,10 @@ void controlLedMatrix(){
 			  break;
 		case SET_ANIMATION:
 			 scan_matrix();
-			 blink_led_mode();
+			 led_ani_on();
 			  if(is_button_pressed_once(0) || is_button_pressed_hold(0)){
 				  status = NORMAL_MODE;
 				  set_state();
-				  setTimer3(500);//0.5s
 			  }
 			  if(is_button_pressed_once(1) || is_button_pressed_hold(1)){
 				  mode_animation++;

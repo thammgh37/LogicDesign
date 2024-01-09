@@ -4,7 +4,7 @@
  *  Created on: Dec 3, 2023
  *      Author: ASUS TUF GAMING
  */
-#include "led_matrix_driver.h"
+#include <driver.h>
 
 void display_col(int col){
 	switch(col){
@@ -127,4 +127,19 @@ void display_row(uint8_t buffer){
 	else HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, RESET);
 }
 
+void led_normal_on(){
+	HAL_GPIO_WritePin(LED_NORMAL_MODE_GPIO_Port, LED_NORMAL_MODE_Pin, RESET);
+	HAL_GPIO_WritePin(LED_CHAR_MODE_GPIO_Port, LED_CHAR_MODE_Pin, SET);
+	HAL_GPIO_WritePin(LED_ANI_MODE_GPIO_Port, LED_ANI_MODE_Pin, SET);
+}
+void led_char_on(){
+	HAL_GPIO_WritePin(LED_NORMAL_MODE_GPIO_Port, LED_NORMAL_MODE_Pin, SET);
+	HAL_GPIO_WritePin(LED_CHAR_MODE_GPIO_Port, LED_CHAR_MODE_Pin, RESET);
+	HAL_GPIO_WritePin(LED_ANI_MODE_GPIO_Port, LED_ANI_MODE_Pin, SET);
+}
+void led_ani_on(){
+	HAL_GPIO_WritePin(LED_NORMAL_MODE_GPIO_Port, LED_NORMAL_MODE_Pin, SET);
+	HAL_GPIO_WritePin(LED_CHAR_MODE_GPIO_Port, LED_CHAR_MODE_Pin, SET);
+	HAL_GPIO_WritePin(LED_ANI_MODE_GPIO_Port, LED_ANI_MODE_Pin, RESET);
+}
 

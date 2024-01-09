@@ -8,13 +8,12 @@
 #ifndef INC_CONTROL_LED_MATRIX_H_
 #define INC_CONTROL_LED_MATRIX_H_
 
+#include "driver.h"
 #include "software_timer.h"
 #include "main.h"
 #include "display_led_matrix.h"
 #include "global.h"
 #include "button.h"
-#include "blink_led_mode.h"
-#include "led_matrix_driver.h"
 void controlLedMatrix();
 
 #endif /* INC_CONTROL_LED_MATRIX_H_ */

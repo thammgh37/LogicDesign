@@ -9,8 +9,8 @@ C_SRCS += \
 ../Core/Src/button.c \
 ../Core/Src/control_led_matrix.c \
 ../Core/Src/display_led_matrix.c \
+../Core/Src/driver.c \
 ../Core/Src/global.c \
-../Core/Src/led_matrix_driver.c \
 ../Core/Src/main.c \
 ../Core/Src/software_timer.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
@@ -24,8 +24,8 @@ OBJS += \
 ./Core/Src/button.o \
 ./Core/Src/control_led_matrix.o \
 ./Core/Src/display_led_matrix.o \
+./Core/Src/driver.o \
 ./Core/Src/global.o \
-./Core/Src/led_matrix_driver.o \
 ./Core/Src/main.o \
 ./Core/Src/software_timer.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
@@ -39,8 +39,8 @@ C_DEPS += \
 ./Core/Src/button.d \
 ./Core/Src/control_led_matrix.d \
 ./Core/Src/display_led_matrix.d \
+./Core/Src/driver.d \
 ./Core/Src/global.d \
-./Core/Src/led_matrix_driver.d \
 ./Core/Src/main.d \
 ./Core/Src/software_timer.d \
 ./Core/Src/stm32f1xx_hal_msp.d \

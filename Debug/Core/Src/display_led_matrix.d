@@ -1,5 +1,5 @@
 Core/Src/display_led_matrix.o: ../Core/Src/display_led_matrix.c \
- ../Core/Inc/display_led_matrix.h ../Core/Inc/main.h \
+ ../Core/Inc/display_led_matrix.h ../Core/Inc/driver.h ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -24,10 +24,11 @@ Core/Src/display_led_matrix.o: ../Core/Src/display_led_matrix.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Core/Inc/software_timer.h ../Core/Inc/global.h \
- ../Core/Inc/led_matrix_driver.h
+ ../Core/Inc/software_timer.h ../Core/Inc/global.h
 
 ../Core/Inc/display_led_matrix.h:
+
+../Core/Inc/driver.h:
 
 ../Core/Inc/main.h:
 
@@ -82,5 +83,3 @@ Core/Src/display_led_matrix.o: ../Core/Src/display_led_matrix.c \
 ../Core/Inc/software_timer.h:
 
 ../Core/Inc/global.h:
-
-../Core/Inc/led_matrix_driver.h:

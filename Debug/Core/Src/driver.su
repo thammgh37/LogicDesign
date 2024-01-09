@@ -1,0 +1,5 @@
+driver.c:9:6:display_col	16	static
+driver.c:95:6:display_row	16	static
+driver.c:130:6:led_normal_on	8	static
+driver.c:135:6:led_char_on	8	static
+driver.c:140:6:led_ani_on	8	static

@@ -5,12 +5,15 @@
  *      Author: ASUS TUF GAMING
  */
 
-#ifndef INC_LED_MATRIX_DRIVER_H_
-#define INC_LED_MATRIX_DRIVER_H_
+#ifndef INC_DRIVER_H_
+#define INC_DRIVER_H_
 #include "main.h"
 
 void display_col(int col);
 void display_row(uint8_t buffer);
 
+void led_normal_on();
+void led_char_on();
+void led_ani_on();
 
-#endif /* INC_LED_MATRIX_DRIVER_H_ */
+#endif /* INC_DRIVER_H_ */
